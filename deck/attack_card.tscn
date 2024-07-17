@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c40kraakerhsq"]
+
+[ext_resource type="PackedScene" uid="uid://pu82ny6qd2u" path="res://deck/card.tscn" id="1_ed7vv"]
+[ext_resource type="Script" path="res://deck/attack_card.gd" id="2_gxrif"]
+
+[node name="AttackCard" groups=["attack_card"] instance=ExtResource("1_ed7vv")]
+script = ExtResource("2_gxrif")
+damage = 20
+speed = 800.0
+text = "Damage: 20
+Speed: 800"
+
+[node name="TextRectangle" parent="MarginContainer/VSplitContainer" index="1"]
+text = "Damage: 20
+Speed: 800"

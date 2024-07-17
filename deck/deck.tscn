@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0hgoap3fcyrf"]
+
+[ext_resource type="PackedScene" uid="uid://pu82ny6qd2u" path="res://deck/card.tscn" id="1_ns7lj"]
+[ext_resource type="Script" path="res://deck/deck.gd" id="1_ue7y2"]
+
+[node name="Deck" type="ColorRect"]
+script = ExtResource("1_ue7y2")
+
+[node name="CardHolder" parent="." instance=ExtResource("1_ns7lj")]
+layout_mode = 0
+front_visible = false

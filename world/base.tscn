@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://8p28jp6qv3d1"]
+
+[ext_resource type="PackedScene" uid="uid://c55gh5wwb8v2y" path="res://gui/gui.tscn" id="1_8gte3"]
+[ext_resource type="Script" path="res://world/base.gd" id="1_t4q6w"]
+[ext_resource type="PackedScene" uid="uid://c6bonl5kp6754" path="res://entities/player.tscn" id="2_p1pc0"]
+
+[node name="Base" type="Node2D"]
+script = ExtResource("1_t4q6w")
+
+[node name="Player" parent="." instance=ExtResource("2_p1pc0")]
+
+[node name="GUI" parent="." instance=ExtResource("1_8gte3")]
+offset_right = 1366.0
+offset_bottom = 768.0
+
+[connection signal="card_used" from="GUI" to="." method="_on_gui_card_used"]

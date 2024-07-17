@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://pu82ny6qd2u"]
+
+[ext_resource type="Script" path="res://deck/card.gd" id="1_sepc2"]
+[ext_resource type="PackedScene" uid="uid://ctxfndygcy7ce" path="res://gui/text_rectangle.tscn" id="1_xowc1"]
+[ext_resource type="PackedScene" uid="uid://f67j4ghdni4y" path="res://gui/image_rectangle.tscn" id="2_57wtd"]
+
+[node name="Card" type="ColorRect"]
+custom_minimum_size = Vector2(192, 384)
+color = Color(0.490783, 0, 0.0868934, 1)
+script = ExtResource("1_sepc2")
+text = "Placeholder"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ImageRectangle" parent="MarginContainer/VSplitContainer" instance=ExtResource("2_57wtd")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextRectangle" parent="MarginContainer/VSplitContainer" instance=ExtResource("1_xowc1")]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Placeholder"
+
+[node name="CardBack" type="ColorRect" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+color = Color(0.567188, 0.00212411, 0.796052, 1)
