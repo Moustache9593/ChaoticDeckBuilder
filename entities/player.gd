@@ -1,7 +1,20 @@
 extends CharacterBody2D
+signal health_change
+signal shield_change
 
 var move_dir := Vector2.ZERO
 var vector_to_mouse := Vector2.ZERO
+@export var max_health = 50
+@onready var health = 0:
+	set(value):
+		health = value
+		emit_signal("health_change",health)
+
+var shield = 0:
+	set(value):
+		shield = value
+		emit_signal("shield_change",shield)
+
 @export var speed := 500.0
 
 func get_mouse_vector():
@@ -19,6 +32,21 @@ func get_move_dir():
 		float(Input.is_action_pressed("move_up"))
 	move_dir = Vector2(move_x,move_y).limit_length(1.0)
 	return move_dir
+
+func _ready():
+	health = max_health
+
+func take_damage(amount):
+	shield -= amount
+	if shield < 0:
+		var health_lost = -shield
+		health -= health_lost
+		shield = 0
+
+func gain_shield(amount):
+	shield += amount
+
+
 
 func _physics_process(_delta):
 	get_input()

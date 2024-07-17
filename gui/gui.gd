@@ -21,7 +21,34 @@ func _input(event):
 			$Crossairs.global_position = get_global_mouse_position()
 
 
+func set_player_title(value):
+	$VSplitContainer/HandRect/HBoxContainer/PlayerStatus/PlayerTitle.text =\
+	value
+
+func set_health_text(value):
+	$VSplitContainer/HandRect/HBoxContainer/PlayerStatus/HealthText.text =\
+	 "health: " + value
+
+func set_shield_text(value):
+	$VSplitContainer/HandRect/HBoxContainer/PlayerStatus/ShieldText.text =\
+	 "shield: " + value
+
+
+
 
 func _on_hand_card_used(card):
 	emit_signal("card_used",card)
+	pass # Replace with function body.
+
+
+
+
+
+func _on_player_health_change(health):
+	set_health_text(str(health))
+
+
+
+func _on_player_shield_change(shield):
+	set_shield_text(str(shield))
 	pass # Replace with function body.

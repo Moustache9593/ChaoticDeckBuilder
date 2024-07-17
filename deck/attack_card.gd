@@ -1,7 +1,7 @@
 @tool
 extends "res://deck/card.gd"
 @export var damage = 5
-@export var speed = 800.0
+@export var speed = 800
 
 
 

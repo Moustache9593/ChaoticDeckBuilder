@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsmcb4prd7np6"]
+
+[ext_resource type="PackedScene" uid="uid://pu82ny6qd2u" path="res://deck/card.tscn" id="1_4mi8h"]
+[ext_resource type="Script" path="res://deck/shield_card.gd" id="2_ovxv2"]
+
+[node name="ShieldCard" instance=ExtResource("1_4mi8h")]
+script = ExtResource("2_ovxv2")
+shield = 5.0
+text = "Gain shield: 5
+"
+
+[node name="TextRectangle" parent="MarginContainer/VSplitContainer" index="1"]
+text = "Gain shield: 5
+"

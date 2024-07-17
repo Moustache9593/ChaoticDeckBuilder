@@ -1,12 +1,24 @@
 extends ColorRect
 @export var inputs :PackedStringArray= []
 signal card_used
+signal get_card
 var card_currently_selected = 0
 var card_just_used = false
+var hand_size = 3
+
+func draw_card():
+	emit_signal("get_card",$HandHolder)
+
 
 func _ready():
 	select_card(card_currently_selected)
 	
+
+func get_chuck_hand_input():
+	if Input.is_action_just_pressed("chuck_hand"):
+		return true
+	else:
+		return false
 
 func get_use_card_input():
 	if Input.is_action_just_pressed("use_card"):
@@ -59,8 +71,13 @@ func _physics_process(_delta):
 	select_card(card_selected)
 	if get_use_card_input():
 		use_card(card_currently_selected)
+	if get_chuck_hand_input():
+		chuck_hand()
 	
-	
-	
-	
+
+func chuck_hand():
+	for card in $HandHolder.get_children():
+		$HandHolder.remove_child(card)
+	for card_index in range(hand_size):
+		draw_card()
 

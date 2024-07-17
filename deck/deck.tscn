@@ -1,11 +1,71 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0hgoap3fcyrf"]
+[gd_scene load_steps=5 format=3 uid="uid://b0hgoap3fcyrf"]
 
-[ext_resource type="PackedScene" uid="uid://pu82ny6qd2u" path="res://deck/card.tscn" id="1_ns7lj"]
 [ext_resource type="Script" path="res://deck/deck.gd" id="1_ue7y2"]
+[ext_resource type="PackedScene" uid="uid://c40kraakerhsq" path="res://deck/attack_card.tscn" id="3_kajy5"]
+[ext_resource type="PackedScene" uid="uid://b3k6lvvg2fcfk" path="res://deck/bomb_card.tscn" id="4_sjpdb"]
+[ext_resource type="PackedScene" uid="uid://bsmcb4prd7np6" path="res://deck/shield_card.tscn" id="4_yadem"]
 
-[node name="Deck" type="ColorRect"]
+[node name="Deck" type="CenterContainer"]
+custom_minimum_size = Vector2(192, 384)
+offset_right = 192.0
+offset_bottom = 384.0
 script = ExtResource("1_ue7y2")
 
-[node name="CardHolder" parent="." instance=ExtResource("1_ns7lj")]
-layout_mode = 0
-front_visible = false
+[node name="CardHolder" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(192, 384)
+layout_mode = 2
+
+[node name="AttackCard" parent="CardHolder" instance=ExtResource("3_kajy5")]
+show_behind_parent = true
+layout_mode = 2
+
+[node name="AttackCard2" parent="CardHolder" instance=ExtResource("3_kajy5")]
+layout_mode = 2
+
+[node name="AttackCard3" parent="CardHolder" instance=ExtResource("3_kajy5")]
+layout_mode = 2
+
+[node name="AttackCard4" parent="CardHolder" instance=ExtResource("3_kajy5")]
+layout_mode = 2
+damage = 500
+text = "Damage: 500
+Speed: 800"
+
+[node name="AttackCard5" parent="CardHolder" instance=ExtResource("3_kajy5")]
+layout_mode = 2
+
+[node name="AttackCard6" parent="CardHolder" instance=ExtResource("3_kajy5")]
+layout_mode = 2
+
+[node name="AttackCard7" parent="CardHolder" instance=ExtResource("3_kajy5")]
+layout_mode = 2
+
+[node name="AttackCard8" parent="CardHolder" instance=ExtResource("3_kajy5")]
+layout_mode = 2
+
+[node name="ShieldCard" parent="CardHolder" instance=ExtResource("4_yadem")]
+layout_mode = 2
+
+[node name="ShieldCard2" parent="CardHolder" instance=ExtResource("4_yadem")]
+layout_mode = 2
+
+[node name="ShieldCard3" parent="CardHolder" instance=ExtResource("4_yadem")]
+layout_mode = 2
+
+[node name="ShieldCard4" parent="CardHolder" instance=ExtResource("4_yadem")]
+layout_mode = 2
+
+[node name="BombCard" parent="CardHolder" instance=ExtResource("4_sjpdb")]
+layout_mode = 2
+
+[node name="BombCard2" parent="CardHolder" instance=ExtResource("4_sjpdb")]
+layout_mode = 2
+self_damage = 50
+text = "Take damage: 50
+"
+
+[node name="BombCard3" parent="CardHolder" instance=ExtResource("4_sjpdb")]
+layout_mode = 2
+
+[node name="BombCard4" parent="CardHolder" instance=ExtResource("4_sjpdb")]
+layout_mode = 2

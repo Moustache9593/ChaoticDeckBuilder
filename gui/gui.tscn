@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c55gh5wwb8v2y"]
+[gd_scene load_steps=6 format=3 uid="uid://c55gh5wwb8v2y"]
 
 [ext_resource type="Script" path="res://gui/gui.gd" id="1_u6qhg"]
 [ext_resource type="PackedScene" uid="uid://djqs4n3g0knt2" path="res://gui/hand.tscn" id="2_6tk7o"]
+[ext_resource type="PackedScene" uid="uid://ctxfndygcy7ce" path="res://gui/text_rectangle.tscn" id="2_lx4tv"]
 [ext_resource type="PackedScene" uid="uid://b0hgoap3fcyrf" path="res://deck/deck.tscn" id="3_ae7tt"]
 [ext_resource type="Texture2D" uid="uid://dvfobv12652bd" path="res://assets/textures/crossairs.png" id="4_6frls"]
 
@@ -10,8 +11,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 554.0
-offset_bottom = 227.0
+offset_right = 1920.0
+offset_bottom = 995.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u6qhg")
@@ -36,27 +37,46 @@ layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.247059, 0.223529, 1, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="VSplitContainer/HandRect"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VSplitContainer/HandRect"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -292.0
-offset_top = -192.0
-offset_right = 292.0
-offset_bottom = 192.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VSplitContainer/HandRect/CenterContainer"]
+[node name="PlayerStatus" type="VBoxContainer" parent="VSplitContainer/HandRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayerTitle" parent="VSplitContainer/HandRect/HBoxContainer/PlayerStatus" instance=ExtResource("2_lx4tv")]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Player
+"
+
+[node name="HealthText" parent="VSplitContainer/HandRect/HBoxContainer/PlayerStatus" instance=ExtResource("2_lx4tv")]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Health
+"
+
+[node name="ShieldText" parent="VSplitContainer/HandRect/HBoxContainer/PlayerStatus" instance=ExtResource("2_lx4tv")]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Shield
+"
+
+[node name="BlankText" parent="VSplitContainer/HandRect/HBoxContainer/PlayerStatus" instance=ExtResource("2_lx4tv")]
+layout_mode = 2
+size_flags_vertical = 3
+text = "
+"
+
+[node name="Hand" parent="VSplitContainer/HandRect/HBoxContainer" instance=ExtResource("2_6tk7o")]
 layout_mode = 2
 
-[node name="Hand" parent="VSplitContainer/HandRect/CenterContainer/HBoxContainer" instance=ExtResource("2_6tk7o")]
-layout_mode = 2
-
-[node name="Deck" parent="VSplitContainer/HandRect/CenterContainer/HBoxContainer" instance=ExtResource("3_ae7tt")]
+[node name="Deck" parent="VSplitContainer/HandRect/HBoxContainer" instance=ExtResource("3_ae7tt")]
 layout_mode = 2
 
 [node name="Crossairs" type="Sprite2D" parent="."]
@@ -65,4 +85,5 @@ modulate = Color(0.478431, 1, 1, 1)
 z_index = 1
 texture = ExtResource("4_6frls")
 
-[connection signal="card_used" from="VSplitContainer/HandRect/CenterContainer/HBoxContainer/Hand" to="." method="_on_hand_card_used"]
+[connection signal="card_used" from="VSplitContainer/HandRect/HBoxContainer/Hand" to="." method="_on_hand_card_used"]
+[connection signal="get_card" from="VSplitContainer/HandRect/HBoxContainer/Hand" to="VSplitContainer/HandRect/HBoxContainer/Deck" method="give_card"]

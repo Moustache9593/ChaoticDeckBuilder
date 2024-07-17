@@ -1,15 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://djqs4n3g0knt2"]
+[gd_scene load_steps=4 format=3 uid="uid://djqs4n3g0knt2"]
 
 [ext_resource type="Script" path="res://gui/hand.gd" id="1_nhpi7"]
 [ext_resource type="PackedScene" uid="uid://c40kraakerhsq" path="res://deck/attack_card.tscn" id="2_lvops"]
+[ext_resource type="PackedScene" uid="uid://b3k6lvvg2fcfk" path="res://deck/bomb_card.tscn" id="3_l8cmo"]
 
 [node name="Hand" type="ColorRect"]
 custom_minimum_size = Vector2(596, 384)
-offset_right = 576.0
+offset_left = 606.0
+offset_right = 606.0
 offset_bottom = 384.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-color = Color(1, 0.235294, 0.941176, 1)
+color = Color(0.192157, 0.152941, 1, 1)
 script = ExtResource("1_nhpi7")
 
 [node name="HandHolder" type="HBoxContainer" parent="."]
@@ -20,6 +20,8 @@ theme_override_constants/separation = 10
 layout_mode = 2
 damage = 8
 speed = 5000.0
+text = "Damage: 8
+Speed: 5000"
 
 [node name="AttackCard2" parent="HandHolder" instance=ExtResource("2_lvops")]
 layout_mode = 2
@@ -28,9 +30,5 @@ speed = 1200.0
 text = "Damage: 10
 Speed: 1200"
 
-[node name="AttackCard3" parent="HandHolder" instance=ExtResource("2_lvops")]
+[node name="BombCard" parent="HandHolder" instance=ExtResource("3_l8cmo")]
 layout_mode = 2
-damage = 5
-speed = 2000.0
-text = "Damage: 5
-Speed: 2000"

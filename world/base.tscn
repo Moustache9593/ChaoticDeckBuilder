@@ -13,4 +13,6 @@ script = ExtResource("1_t4q6w")
 offset_right = 1366.0
 offset_bottom = 768.0
 
+[connection signal="health_change" from="Player" to="GUI" method="_on_player_health_change"]
+[connection signal="shield_change" from="Player" to="GUI" method="_on_player_shield_change"]
 [connection signal="card_used" from="GUI" to="." method="_on_gui_card_used"]
