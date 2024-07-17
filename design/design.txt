@@ -1,0 +1,9 @@
+Have draw timer to draw more cards.
+Shuffle
+Enemies
+Health
+Defense
+Levels
+
+Probably can't do random generation, keep the game static. 
+Expect around thirty minutes of gameplay max.

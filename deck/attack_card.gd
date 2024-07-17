@@ -6,10 +6,10 @@ extends "res://deck/card.gd"
 
 
 func ready():
-	#text = "Damage: " + str(damage) + "\n"
-	#text += "Speed: " + str(speed)
-	#super()
-	pass
+	text = "Damage: " + str(damage) + "\n"
+	text += "Speed: " + str(speed)
+	super()
+
 
 func process(delta):
 	text = "Damage: " + str(damage) + "\n" + \
