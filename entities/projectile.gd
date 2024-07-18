@@ -15,3 +15,13 @@ func _ready():
 func _physics_process(delta):
 	position += velocity * delta
 
+
+
+func _on_body_entered(body):
+	if body.is_in_group("enemy") and is_in_group("player_projectile"):
+		body.health -= damage
+		queue_free()
+	elif body.is_in_group("player") and is_in_group("enemy_projectile"):
+		body.health -= damage
+		queue_free()
+

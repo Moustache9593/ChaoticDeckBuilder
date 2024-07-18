@@ -19,16 +19,16 @@ theme_override_constants/separation = 10
 [node name="AttackCard" parent="HandHolder" instance=ExtResource("2_lvops")]
 layout_mode = 2
 damage = 8
-speed = 5000.0
+speed = 300
 text = "Damage: 8
-Speed: 5000"
+Speed: 300"
 
 [node name="AttackCard2" parent="HandHolder" instance=ExtResource("2_lvops")]
 layout_mode = 2
 damage = 10
-speed = 1200.0
+speed = 300
 text = "Damage: 10
-Speed: 1200"
+Speed: 300"
 
 [node name="BombCard" parent="HandHolder" instance=ExtResource("3_l8cmo")]
 layout_mode = 2

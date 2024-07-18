@@ -30,7 +30,7 @@ dragger_visibility = 2
 [node name="ColorRect" type="ColorRect" parent="VSplitContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-color = Color(1, 0.380392, 1, 0.211765)
+color = Color(1, 0.380392, 1, 0.0431373)
 
 [node name="HandRect" type="ColorRect" parent="VSplitContainer"]
 layout_mode = 2

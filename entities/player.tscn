@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://c216iwp4cuyai" path="res://assets/textures/placeholder_texture_third.png" id="3_40r3h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iq1sl"]
-radius = 16.0
+radius = 15.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_svkq5")
 
 [node name="Stick" type="Sprite2D" parent="."]

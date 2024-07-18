@@ -33,8 +33,11 @@ func get_move_dir():
 	move_dir = Vector2(move_x,move_y).limit_length(1.0)
 	return move_dir
 
+
+
 func _ready():
 	health = max_health
+
 
 func take_damage(amount):
 	shield -= amount
