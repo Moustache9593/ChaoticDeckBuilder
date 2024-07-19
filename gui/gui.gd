@@ -2,13 +2,12 @@
 extends Control
 signal card_used
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	set_deferred("size",get_window().size)
-	pass # Replace with function body.
+	pass
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if Engine.is_editor_hint():
 		size.x = ProjectSettings.get("display/window/size/viewport_width") 
@@ -38,7 +37,8 @@ func set_shield_text(value):
 
 func _on_hand_card_used(card):
 	emit_signal("card_used",card)
-	pass # Replace with function body.
+	$VSplitContainer/HandRect/HBoxContainer/Deck.add_to_discard_pile(card)
+
 
 
 
@@ -51,4 +51,9 @@ func _on_player_health_change(health):
 
 func _on_player_shield_change(shield):
 	set_shield_text(str(shield))
-	pass # Replace with function body.
+
+
+
+func _on_hand_card_discarded(card):
+	$VSplitContainer/HandRect/HBoxContainer/Deck.add_to_discard_pile(card)
+

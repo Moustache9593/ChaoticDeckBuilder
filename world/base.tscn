@@ -19,9 +19,11 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_p1pc0")]
 position = Vector2(143, 176)
+speed = 75.0
+dash_speed = 600.0
 
 [node name="Enemy" parent="." instance=ExtResource("5_c8ymd")]
-position = Vector2(497, 177)
+position = Vector2(1247, 188)
 
 [connection signal="card_used" from="GUI" to="." method="_on_gui_card_used"]
 [connection signal="health_change" from="Player" to="GUI" method="_on_player_health_change"]

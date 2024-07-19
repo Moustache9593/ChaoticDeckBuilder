@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0hgoap3fcyrf"]
+[gd_scene load_steps=7 format=3 uid="uid://b0hgoap3fcyrf"]
 
 [ext_resource type="Script" path="res://deck/deck.gd" id="1_ue7y2"]
 [ext_resource type="PackedScene" uid="uid://c40kraakerhsq" path="res://deck/attack_card.tscn" id="3_kajy5"]
 [ext_resource type="PackedScene" uid="uid://b3k6lvvg2fcfk" path="res://deck/bomb_card.tscn" id="4_sjpdb"]
 [ext_resource type="PackedScene" uid="uid://bsmcb4prd7np6" path="res://deck/shield_card.tscn" id="4_yadem"]
+[ext_resource type="PackedScene" uid="uid://c6qe62ows8xt7" path="res://deck/discard_card.tscn" id="5_0v7xj"]
+[ext_resource type="PackedScene" uid="uid://chtp4ocxeslqt" path="res://deck/dash_card.tscn" id="6_uy3dj"]
 
 [node name="Deck" type="CenterContainer"]
 custom_minimum_size = Vector2(192, 384)
@@ -11,64 +13,148 @@ offset_right = 192.0
 offset_bottom = 384.0
 script = ExtResource("1_ue7y2")
 
-[node name="CardHolder" type="CenterContainer" parent="."]
+[node name="ActiveDeck" type="CenterContainer" parent="."]
 visible = false
 custom_minimum_size = Vector2(192, 384)
 layout_mode = 2
 
-[node name="AttackCard" parent="CardHolder" instance=ExtResource("3_kajy5")]
+[node name="AttackCard" parent="ActiveDeck" instance=ExtResource("3_kajy5")]
 show_behind_parent = true
 layout_mode = 2
 
-[node name="AttackCard2" parent="CardHolder" instance=ExtResource("3_kajy5")]
+[node name="AttackCard2" parent="ActiveDeck" instance=ExtResource("3_kajy5")]
 layout_mode = 2
 
-[node name="AttackCard3" parent="CardHolder" instance=ExtResource("3_kajy5")]
+[node name="AttackCard3" parent="ActiveDeck" instance=ExtResource("3_kajy5")]
 layout_mode = 2
 
-[node name="AttackCard4" parent="CardHolder" instance=ExtResource("3_kajy5")]
+[node name="AttackCard4" parent="ActiveDeck" instance=ExtResource("3_kajy5")]
 layout_mode = 2
 damage = 500
 text = "Damage: 500
 Speed: 800"
 
-[node name="AttackCard5" parent="CardHolder" instance=ExtResource("3_kajy5")]
+[node name="AttackCard5" parent="ActiveDeck" instance=ExtResource("3_kajy5")]
 layout_mode = 2
 
-[node name="AttackCard6" parent="CardHolder" instance=ExtResource("3_kajy5")]
+[node name="AttackCard6" parent="ActiveDeck" instance=ExtResource("3_kajy5")]
 layout_mode = 2
 
-[node name="AttackCard7" parent="CardHolder" instance=ExtResource("3_kajy5")]
+[node name="AttackCard7" parent="ActiveDeck" instance=ExtResource("3_kajy5")]
 layout_mode = 2
 
-[node name="AttackCard8" parent="CardHolder" instance=ExtResource("3_kajy5")]
+[node name="AttackCard8" parent="ActiveDeck" instance=ExtResource("3_kajy5")]
 layout_mode = 2
 
-[node name="ShieldCard" parent="CardHolder" instance=ExtResource("4_yadem")]
+[node name="ShieldCard" parent="ActiveDeck" instance=ExtResource("4_yadem")]
 layout_mode = 2
 
-[node name="ShieldCard2" parent="CardHolder" instance=ExtResource("4_yadem")]
+[node name="ShieldCard2" parent="ActiveDeck" instance=ExtResource("4_yadem")]
 layout_mode = 2
 
-[node name="ShieldCard3" parent="CardHolder" instance=ExtResource("4_yadem")]
+[node name="ShieldCard3" parent="ActiveDeck" instance=ExtResource("4_yadem")]
 layout_mode = 2
 
-[node name="ShieldCard4" parent="CardHolder" instance=ExtResource("4_yadem")]
+[node name="ShieldCard4" parent="ActiveDeck" instance=ExtResource("4_yadem")]
 layout_mode = 2
 
-[node name="BombCard" parent="CardHolder" instance=ExtResource("4_sjpdb")]
+[node name="BombCard" parent="ActiveDeck" instance=ExtResource("4_sjpdb")]
 layout_mode = 2
 
-[node name="BombCard2" parent="CardHolder" instance=ExtResource("4_sjpdb")]
-layout_mode = 2
-self_damage = 50
-text = "Take damage: 50
-"
-
-[node name="BombCard3" parent="CardHolder" instance=ExtResource("4_sjpdb")]
+[node name="BombCard2" parent="ActiveDeck" instance=ExtResource("4_sjpdb")]
 layout_mode = 2
 
-[node name="BombCard4" parent="CardHolder" instance=ExtResource("4_sjpdb")]
+[node name="BombCard3" parent="ActiveDeck" instance=ExtResource("4_sjpdb")]
+layout_mode = 2
+
+[node name="BombCard4" parent="ActiveDeck" instance=ExtResource("4_sjpdb")]
+layout_mode = 2
+
+[node name="DiscardCard" parent="ActiveDeck" instance=ExtResource("5_0v7xj")]
+layout_mode = 2
+discard_directions = "right"
+
+[node name="DiscardCard2" parent="ActiveDeck" instance=ExtResource("5_0v7xj")]
+layout_mode = 2
+
+[node name="DiscardCard3" parent="ActiveDeck" instance=ExtResource("5_0v7xj")]
+layout_mode = 2
+discard_directions = "right"
+
+[node name="DiscardCard8" parent="ActiveDeck" instance=ExtResource("5_0v7xj")]
+layout_mode = 2
+discard_directions = "right"
+
+[node name="DiscardCard9" parent="ActiveDeck" instance=ExtResource("5_0v7xj")]
+layout_mode = 2
+discard_directions = "right"
+
+[node name="DiscardCard4" parent="ActiveDeck" instance=ExtResource("5_0v7xj")]
+layout_mode = 2
+discard_directions = "both"
+
+[node name="DiscardCard5" parent="ActiveDeck" instance=ExtResource("5_0v7xj")]
+layout_mode = 2
+
+[node name="DiscardCard6" parent="ActiveDeck" instance=ExtResource("5_0v7xj")]
+layout_mode = 2
+
+[node name="DiscardCard7" parent="ActiveDeck" instance=ExtResource("5_0v7xj")]
+layout_mode = 2
+discard_directions = "both"
+
+[node name="DiscardCard10" parent="ActiveDeck" instance=ExtResource("5_0v7xj")]
+layout_mode = 2
+discard_directions = "both"
+
+[node name="DiscardCard11" parent="ActiveDeck" instance=ExtResource("5_0v7xj")]
+layout_mode = 2
+discard_directions = "both"
+
+[node name="DiscardCard12" parent="ActiveDeck" instance=ExtResource("5_0v7xj")]
+layout_mode = 2
+discard_directions = "both"
+
+[node name="DiscardCard13" parent="ActiveDeck" instance=ExtResource("5_0v7xj")]
+layout_mode = 2
+discard_directions = "both"
+
+[node name="DiscardCard14" parent="ActiveDeck" instance=ExtResource("5_0v7xj")]
+layout_mode = 2
+discard_directions = "both"
+
+[node name="DiscardCard15" parent="ActiveDeck" instance=ExtResource("5_0v7xj")]
+layout_mode = 2
+discard_directions = "both"
+
+[node name="DiscardCard16" parent="ActiveDeck" instance=ExtResource("5_0v7xj")]
+layout_mode = 2
+discard_directions = "both"
+
+[node name="DashCard" parent="ActiveDeck" instance=ExtResource("6_uy3dj")]
+layout_mode = 2
+
+[node name="DashCard2" parent="ActiveDeck" instance=ExtResource("6_uy3dj")]
+layout_mode = 2
+
+[node name="DashCard3" parent="ActiveDeck" instance=ExtResource("6_uy3dj")]
+layout_mode = 2
+
+[node name="DashCard4" parent="ActiveDeck" instance=ExtResource("6_uy3dj")]
+layout_mode = 2
+
+[node name="DashCard5" parent="ActiveDeck" instance=ExtResource("6_uy3dj")]
+layout_mode = 2
+
+[node name="DashCard6" parent="ActiveDeck" instance=ExtResource("6_uy3dj")]
+layout_mode = 2
+
+[node name="DashCard7" parent="ActiveDeck" instance=ExtResource("6_uy3dj")]
+layout_mode = 2
+
+[node name="DiscardPile" type="CenterContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(192, 384)
 layout_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="."]

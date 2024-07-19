@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ctxfndygcy7ce" path="res://gui/text_rectangle.tscn" id="1_xowc1"]
 [ext_resource type="PackedScene" uid="uid://f67j4ghdni4y" path="res://gui/image_rectangle.tscn" id="2_57wtd"]
 
-[node name="Card" type="ColorRect"]
+[node name="Card" type="ColorRect" groups=["card"]]
 custom_minimum_size = Vector2(192, 384)
 color = Color(0.490783, 0, 0.0868934, 1)
 script = ExtResource("1_sepc2")

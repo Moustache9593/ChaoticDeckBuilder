@@ -71,10 +71,10 @@ size_flags_vertical = 3
 text = "
 "
 
-[node name="Hand" parent="VSplitContainer/HandRect/HBoxContainer" instance=ExtResource("2_6tk7o")]
+[node name="Deck" parent="VSplitContainer/HandRect/HBoxContainer" instance=ExtResource("3_ae7tt")]
 layout_mode = 2
 
-[node name="Deck" parent="VSplitContainer/HandRect/HBoxContainer" instance=ExtResource("3_ae7tt")]
+[node name="Hand" parent="VSplitContainer/HandRect/HBoxContainer" instance=ExtResource("2_6tk7o")]
 layout_mode = 2
 
 [node name="Crossairs" type="Sprite2D" parent="."]
@@ -83,5 +83,6 @@ modulate = Color(0.478431, 1, 1, 1)
 z_index = 1
 texture = ExtResource("4_6frls")
 
+[connection signal="card_discarded" from="VSplitContainer/HandRect/HBoxContainer/Hand" to="." method="_on_hand_card_discarded"]
 [connection signal="card_used" from="VSplitContainer/HandRect/HBoxContainer/Hand" to="." method="_on_hand_card_used"]
 [connection signal="get_card" from="VSplitContainer/HandRect/HBoxContainer/Hand" to="VSplitContainer/HandRect/HBoxContainer/Deck" method="give_card"]

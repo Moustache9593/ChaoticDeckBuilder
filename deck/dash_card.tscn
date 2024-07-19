@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://chtp4ocxeslqt"]
+
+[ext_resource type="PackedScene" uid="uid://pu82ny6qd2u" path="res://deck/card.tscn" id="1_tsw6j"]
+
+[node name="DashCard" groups=["dash"] instance=ExtResource("1_tsw6j")]
+text = "Dash"
+
+[node name="TextRectangle" parent="MarginContainer/VSplitContainer" index="1"]
+text = "Dash"

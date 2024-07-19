@@ -6,8 +6,8 @@
 
 [node name="BombCard" instance=ExtResource("1_ex3te")]
 script = ExtResource("2_p7mrp")
-self_damage = 5.0
-text = "Take damage: 5
+self_damage = 10
+text = "Take damage: 10
 "
 texture = ExtResource("3_3bog4")
 
@@ -15,5 +15,5 @@ texture = ExtResource("3_3bog4")
 texture = ExtResource("3_3bog4")
 
 [node name="TextRectangle" parent="MarginContainer/VSplitContainer" index="1"]
-text = "Take damage: 5
+text = "Take damage: 10
 "

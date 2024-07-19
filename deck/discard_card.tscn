@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6qe62ows8xt7"]
+
+[ext_resource type="PackedScene" uid="uid://pu82ny6qd2u" path="res://deck/card.tscn" id="1_x8i3t"]
+[ext_resource type="Script" path="res://deck/discard_card.gd" id="2_ey6oi"]
+
+[node name="DiscardCard" groups=["discard"] instance=ExtResource("1_x8i3t")]
+script = ExtResource("2_ey6oi")
+discard_directions = "left"
+text = "Card Placeholder"

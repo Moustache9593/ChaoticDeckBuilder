@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6bonl5kp6754"]
+[gd_scene load_steps=6 format=3 uid="uid://c6bonl5kp6754"]
 
 [ext_resource type="Texture2D" uid="uid://icabc1iw0g4n" path="res://assets/textures/player.png" id="1_6f28b"]
 [ext_resource type="Script" path="res://entities/player.gd" id="1_svkq5"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iq1sl"]
 radius = 15.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8qnpu"]
+radius = 14.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_svkq5")
@@ -22,3 +25,14 @@ texture = ExtResource("1_6f28b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_iq1sl")
+
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_8qnpu")
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
