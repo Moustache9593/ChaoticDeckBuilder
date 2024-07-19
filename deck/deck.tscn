@@ -12,6 +12,7 @@ offset_bottom = 384.0
 script = ExtResource("1_ue7y2")
 
 [node name="CardHolder" type="CenterContainer" parent="."]
+visible = false
 custom_minimum_size = Vector2(192, 384)
 layout_mode = 2
 
@@ -68,4 +69,8 @@ text = "Take damage: 50
 layout_mode = 2
 
 [node name="BombCard4" parent="CardHolder" instance=ExtResource("4_sjpdb")]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(192, 384)
 layout_mode = 2

@@ -7,7 +7,6 @@
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_5jcxg"]
 scenes/1/scene = ExtResource("1_ilq02")
-scenes/1/display_placeholder = ExtResource("1_ilq02")
 scenes/2/scene = ExtResource("2_kqwn0")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v4rx8"]

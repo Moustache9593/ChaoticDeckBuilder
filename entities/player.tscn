@@ -9,6 +9,7 @@ radius = 15.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_svkq5")
+speed = 200.0
 
 [node name="Stick" type="Sprite2D" parent="."]
 scale = Vector2(1, 0.125)
