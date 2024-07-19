@@ -85,6 +85,8 @@ func get_card_select_input():
 	var card2_select = Input.is_action_just_pressed("second_card")
 	var card3_select = Input.is_action_just_pressed("third_card")
 	var card4_select = Input.is_action_just_pressed("fourth_card")
+	var card_right_select = Input.is_action_just_pressed("card_right")
+	var card_left_select = Input.is_action_just_pressed("card_left")
 	if card1_select:
 		return 0
 	elif card2_select:
@@ -93,6 +95,10 @@ func get_card_select_input():
 		return 2
 	elif card4_select:
 		return 3
+	elif card_right_select:
+		return card_currently_selected + 1
+	elif card_left_select:
+		return card_currently_selected - 1
 	else:
 		return -1
 

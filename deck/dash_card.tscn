@@ -1,9 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://chtp4ocxeslqt"]
+[gd_scene load_steps=3 format=3 uid="uid://chtp4ocxeslqt"]
 
 [ext_resource type="PackedScene" uid="uid://pu82ny6qd2u" path="res://deck/card.tscn" id="1_tsw6j"]
+[ext_resource type="Texture2D" uid="uid://ce0epr5n4vb1d" path="res://assets/textures/dash.png" id="2_mlvgi"]
 
 [node name="DashCard" groups=["dash"] instance=ExtResource("1_tsw6j")]
 text = "Dash"
+texture = ExtResource("2_mlvgi")
 
-[node name="TextRectangle" parent="MarginContainer/VSplitContainer" index="1"]
+[node name="TitleRectangle" parent="MarginContainer/VSplitContainer" index="0"]
+text = "Dash
+
+"
+
+[node name="ImageRectangle" parent="MarginContainer/VSplitContainer" index="1"]
+texture = ExtResource("2_mlvgi")
+
+[node name="TextRectangle" parent="MarginContainer/VSplitContainer" index="2"]
 text = "Dash"

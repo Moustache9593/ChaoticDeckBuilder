@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c40kraakerhsq"]
+[gd_scene load_steps=4 format=3 uid="uid://c40kraakerhsq"]
 
 [ext_resource type="PackedScene" uid="uid://pu82ny6qd2u" path="res://deck/card.tscn" id="1_ed7vv"]
 [ext_resource type="Script" path="res://deck/attack_card.gd" id="2_gxrif"]
+[ext_resource type="Texture2D" uid="uid://b484jkcrxhj0" path="res://assets/textures/attack.png" id="3_d1wf6"]
 
 [node name="AttackCard" groups=["attack_card"] instance=ExtResource("1_ed7vv")]
 script = ExtResource("2_gxrif")
@@ -9,7 +10,16 @@ damage = 20
 speed = 800.0
 text = "Damage: 20
 Speed: 800"
+texture = ExtResource("3_d1wf6")
 
-[node name="TextRectangle" parent="MarginContainer/VSplitContainer" index="1"]
+[node name="TitleRectangle" parent="MarginContainer/VSplitContainer" index="0"]
+text = "Attack
+
+"
+
+[node name="ImageRectangle" parent="MarginContainer/VSplitContainer" index="1"]
+texture = ExtResource("3_d1wf6")
+
+[node name="TextRectangle" parent="MarginContainer/VSplitContainer" index="2"]
 text = "Damage: 20
 Speed: 800"
