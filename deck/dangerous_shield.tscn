@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://co7y411rpi67c"]
+
+[ext_resource type="PackedScene" uid="uid://pu82ny6qd2u" path="res://deck/card.tscn" id="1_fhxvn"]
+[ext_resource type="Script" path="res://deck/dangerous_shield.gd" id="2_6m0hi"]
+[ext_resource type="Texture2D" uid="uid://22lad4mj88yr" path="res://assets/textures/shield.png" id="3_xmhfc"]
+
+[node name="ShieldDiscardBad" instance=ExtResource("1_fhxvn")]
+script = ExtResource("2_6m0hi")
+shield = 5.0
+self_damage = 100.0
+text = "Gain shield: 5
+On discard: take 100 damage."
+texture = ExtResource("3_xmhfc")
+title = "Dangerous Shield"
+
+[node name="TitleRectangle" parent="MarginContainer/VSplitContainer" index="0"]
+text = "Dangerous Shield"
+
+[node name="ImageRectangle" parent="MarginContainer/VSplitContainer" index="1"]
+texture = ExtResource("3_xmhfc")
+
+[node name="TextRectangle" parent="MarginContainer/VSplitContainer" index="2"]
+text = "Gain shield: 5
+On discard: take 100 damage."

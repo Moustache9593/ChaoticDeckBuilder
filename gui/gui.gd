@@ -1,7 +1,7 @@
 @tool
 extends Control
 signal card_used
-
+signal discarded_card
 
 func _ready():
 	set_deferred("size",get_window().size)
@@ -21,15 +21,15 @@ func _input(event):
 
 
 func set_player_title(value):
-	$VSplitContainer/HandRect/HBoxContainer/PlayerStatus/PlayerTitle.text =\
+	$VSplitContainer/PlayerStatus/PlayerTitle.text =\
 	value
 
 func set_health_text(value):
-	$VSplitContainer/HandRect/HBoxContainer/PlayerStatus/HealthText.text =\
+	$VSplitContainer/PlayerStatus/HealthText.text =\
 	 "health: " + value
 
 func set_shield_text(value):
-	$VSplitContainer/HandRect/HBoxContainer/PlayerStatus/ShieldText.text =\
+	$VSplitContainer/PlayerStatus/ShieldText.text =\
 	 "shield: " + value
 
 
@@ -55,7 +55,9 @@ func _on_player_shield_change(shield):
 
 
 func _on_hand_card_discarded(card):
+	emit_signal("discarded_card",card)
 	$VSplitContainer/HandRect/HBoxContainer/Deck.add_to_discard_pile(card)
+	
 
 
 

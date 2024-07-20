@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var player = get_player()
 var status_card = preload("res://deck/bomb_card.tscn")
 
+var current_action = "invalid"
 
 @onready var health = max_health:
 	set(value):
@@ -21,7 +22,7 @@ func _ready():
 func _physics_process(delta):
 	physics_process(delta)
 
-const damage = 10
+const damage = 20
 const projectile_speed = 700
 func shoot_projectile(group):
 	if player != null:
@@ -40,6 +41,8 @@ func get_player():
 
 func ready():
 	health = max_health
+	choose_action()
+
 func physics_process(delta):
 	pass
 
@@ -68,3 +71,24 @@ func _on_status_timer_timeout():
 	var discard_pile = deck.get_node("DiscardPile")
 	discard_pile.add_child(bomb)
 
+func choose_action():
+	var random_percent = randf_range(0,100)
+	if random_percent <= 50:
+		current_action = "attack"
+		$Marker2D/TextRectangle.text = "Attack for " + str(damage) + " damage."
+	elif random_percent > 50:
+		current_action = "status"
+		$Marker2D/TextRectangle.text = "Inflicting status"
+	
+
+
+func _on_action_timer_timeout():
+	match current_action:
+		"attack":
+			shoot_projectile("enemy")
+		"status":
+			_on_status_timer_timeout()
+		_:
+			push_error("Invalid enemy action!")
+	choose_action()
+	$EnemyActionSoundEffect.play()

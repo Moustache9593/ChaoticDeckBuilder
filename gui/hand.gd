@@ -3,12 +3,12 @@ extends ColorRect
 signal card_used
 signal card_discarded
 signal get_card
-signal card_held
 var card_currently_selected = 0
 var card_just_used = false
 var hand_size = 5
 @onready var hand_holder = $HBoxContainer/HandHolder
-@onready var card_hold_right = $HBoxContainer/CardHold
+@onready var card_hold_right = $HBoxContainer/CardHoldRight
+@onready var card_hold_left = $HBoxContainer/CardHoldLeft
 
 
 func draw_card():
@@ -42,8 +42,14 @@ func get_use_card_input():
 	else:
 		return false
 
-func get_hold_input():
-	if Input.is_action_just_pressed("hold"):
+func get_hold_right_input():
+	if Input.is_action_just_pressed("hold_right"):
+		return true
+	else:
+		return false
+
+func get_hold_left_input():
+	if Input.is_action_just_pressed("hold_left"):
 		return true
 	else:
 		return false
@@ -91,6 +97,10 @@ func hold_card_right(card):
 	hand_holder.remove_child(card)
 	card_hold_right.add_child(card)
 
+func hold_card_left(card):
+	hand_holder.remove_child(card)
+	card_hold_left.add_child(card)
+
 func get_card_select_input():
 	var card1_select = Input.is_action_just_pressed("first_card")
 	var card2_select = Input.is_action_just_pressed("second_card")
@@ -136,13 +146,23 @@ func get_currently_selected_card():
 	return hand_holder.get_child(card_currently_selected)
 
 
-func card_is_held():
-	return $HBoxContainer/CardHold.get_child_count() > 0
+func left_card_is_held():
+	return card_hold_left.get_child_count() > 0
+
+func right_card_is_held():
+	return card_hold_right.get_child_count() > 0
 
 func unhold_card_right():
 	var card = card_hold_right.get_child(0)
 	card_hold_right.remove_child(card)
 	hand_holder.add_child(card)
+	
+
+func unhold_card_left():
+	var card = card_hold_left.get_child(0)
+	card_hold_left.remove_child(card)
+	hand_holder.add_child(card)
+	hand_holder.move_child(card,0)
 
 func hand_full():
 	return hand_holder.get_child_count() >= hand_size
@@ -158,18 +178,26 @@ func _physics_process(_delta):
 		select_card(card_selected)
 	if get_use_card_input():
 		use_card(card_currently_selected)
-	if get_hold_input():
-		if not card_is_held():
+	if get_hold_right_input() and !hand_is_empty():
+		if not right_card_is_held():
 			hold_card_right(get_currently_selected_card())
-		elif card_is_held():
+		elif right_card_is_held():
 			unhold_card_right()
 			use_card(get_last_index())
+	if get_hold_left_input() and !hand_is_empty():
+		if not left_card_is_held():
+			hold_card_left(get_currently_selected_card())
+		elif left_card_is_held():
+			unhold_card_left()
+			use_card(get_first_index())
 	if hand_is_empty():
 		fill_hand()
 
 func get_last_card():
 	return hand_holder.get_child(hand_holder.get_child_count()-1)
 
+func get_first_index():
+	return 0
 
 func get_last_index():
 	return hand_holder.get_child_count()-1

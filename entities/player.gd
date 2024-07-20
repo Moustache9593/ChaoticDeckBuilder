@@ -65,7 +65,7 @@ func heal(amount):
 	health += amount
 	if health > max_health:
 		health = max_health
-	$ShieldUpEffect.play()
+	$HealSoundEffect.play()
 
 func dashing():
 	return not $DashTimer.is_stopped()

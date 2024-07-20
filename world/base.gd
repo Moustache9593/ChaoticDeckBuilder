@@ -36,19 +36,23 @@ func get_mouse_vector():
 func _on_gui_card_used(card):
 	match card.title:
 		"Shoot":
-			shoot_projectile("player",card)
+			if player != null:
+				shoot_projectile("player",card)
 		"Bomb":
 			if player != null:
 				player.take_damage(card.self_damage)
 		"Shield":
 			if player != null:
 				player.gain_shield(card.shield)
+		"Dangerous Shield":
+			if player != null:
+				player.gain_shield(card.shield)
 		"Discard Left":
-			pass
+			$DiscardEffect.play()
 		"Discard Right":
-			pass
+			$DiscardEffect.play()
 		"Discard Both":
-			pass
+			$DiscardEffect.play()
 		"Dash":
 			if player != null:
 				player.dash()
@@ -59,3 +63,10 @@ func _on_gui_card_used(card):
 			push_error("Invalid Card Title!")
 
 
+
+
+func _on_gui_discarded_card(card):
+	if card.title == "Dangerous Shield":
+		if player != null:
+			player.take_damage(card.self_damage)
+	pass # Replace with function body.

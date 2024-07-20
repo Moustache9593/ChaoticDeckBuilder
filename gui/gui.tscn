@@ -15,20 +15,55 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u6qhg")
 
-[node name="VSplitContainer" type="VSplitContainer" parent="."]
+[node name="VSplitContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-collapsed = true
-dragger_visibility = 2
 
 [node name="ColorRect" type="ColorRect" parent="VSplitContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 0.75
 color = Color(1, 0.380392, 1, 0.0431373)
+
+[node name="PlayerStatus" type="HBoxContainer" parent="VSplitContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="PlayerTitle" parent="VSplitContainer/PlayerStatus" instance=ExtResource("2_lx4tv")]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+text = "Player
+"
+
+[node name="HealthText" parent="VSplitContainer/PlayerStatus" instance=ExtResource("2_lx4tv")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Health
+"
+
+[node name="ShieldText" parent="VSplitContainer/PlayerStatus" instance=ExtResource("2_lx4tv")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Shield
+"
+
+[node name="BlankText" parent="VSplitContainer/PlayerStatus" instance=ExtResource("2_lx4tv")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "
+"
 
 [node name="HandRect" type="ColorRect" parent="VSplitContainer"]
 layout_mode = 2
@@ -42,34 +77,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="PlayerStatus" type="VBoxContainer" parent="VSplitContainer/HandRect/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="PlayerTitle" parent="VSplitContainer/HandRect/HBoxContainer/PlayerStatus" instance=ExtResource("2_lx4tv")]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Player
-"
-
-[node name="HealthText" parent="VSplitContainer/HandRect/HBoxContainer/PlayerStatus" instance=ExtResource("2_lx4tv")]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Health
-"
-
-[node name="ShieldText" parent="VSplitContainer/HandRect/HBoxContainer/PlayerStatus" instance=ExtResource("2_lx4tv")]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Shield
-"
-
-[node name="BlankText" parent="VSplitContainer/HandRect/HBoxContainer/PlayerStatus" instance=ExtResource("2_lx4tv")]
-layout_mode = 2
-size_flags_vertical = 3
-text = "
-"
 
 [node name="Deck" parent="VSplitContainer/HandRect/HBoxContainer" instance=ExtResource("3_ae7tt")]
 visible = false

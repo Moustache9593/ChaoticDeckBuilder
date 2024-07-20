@@ -5,8 +5,9 @@
 [node name="Hand" type="ColorRect"]
 custom_minimum_size = Vector2(1182, 384)
 offset_left = 606.0
-offset_right = 606.0
+offset_right = 1980.0
 offset_bottom = 384.0
+scale = Vector2(0.8, 0.8)
 color = Color(0.192157, 0.152941, 1, 1)
 script = ExtResource("1_nhpi7")
 
@@ -15,10 +16,14 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="CardHoldLeft" type="CenterContainer" parent="HBoxContainer"]
+modulate = Color(0.480069, 0.704941, 0.181987, 1)
+layout_mode = 2
+
 [node name="HandHolder" type="HBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="CardHold" type="CenterContainer" parent="HBoxContainer"]
+[node name="CardHoldRight" type="CenterContainer" parent="HBoxContainer"]
 modulate = Color(0.480069, 0.704941, 0.181987, 1)
 layout_mode = 2
