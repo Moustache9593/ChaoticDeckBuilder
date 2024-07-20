@@ -11,7 +11,8 @@ var status_card = preload("res://deck/bomb_card.tscn")
 @onready var health = max_health:
 	set(value):
 		health = value
-		$ProgressBar.value = (health/max_health) * 100
+		$HealthBar.value = (health/max_health) * 100
+		$HealthBar/HealthText.text = str(health)
 		if health < 0:
 			call_deferred("queue_free")
 
@@ -37,7 +38,7 @@ func get_player():
 	return get_tree().get_first_node_in_group("player")
 
 func ready():
-	$ProgressBar.value = health
+	health = max_health
 func physics_process(delta):
 	pass
 
