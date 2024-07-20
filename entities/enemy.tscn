@@ -11,6 +11,7 @@ radius = 34.0588
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_edfrd")
+max_health = 400
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_645ma")
@@ -22,10 +23,15 @@ shape = SubResource("CircleShape2D_gptm4")
 wait_time = 4.0
 autostart = true
 
+[node name="StatusTimer" type="Timer" parent="."]
+wait_time = 7.0
+autostart = true
+
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_a50xa")
 
 [connection signal="timeout" from="ProjectileTimer" to="." method="_on_projectile_timer_timeout"]
+[connection signal="timeout" from="StatusTimer" to="." method="_on_status_timer_timeout"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

@@ -42,6 +42,7 @@ func _process(delta):
 	process(delta)
 
 func ready():
+	Library.add_cards_to_deck()
 	shuffle_deck()
 
 func process(_delta):

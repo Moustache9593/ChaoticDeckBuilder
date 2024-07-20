@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dd554s177mkgw"]
+[gd_scene load_steps=6 format=3 uid="uid://dd554s177mkgw"]
 
 [ext_resource type="Script" path="res://deck/library.gd" id="1_swloc"]
+[ext_resource type="PackedScene" uid="uid://c40kraakerhsq" path="res://deck/attack_card.tscn" id="2_hcydh"]
+[ext_resource type="PackedScene" uid="uid://bsmcb4prd7np6" path="res://deck/shield_card.tscn" id="3_lf1wr"]
+[ext_resource type="PackedScene" uid="uid://c6qe62ows8xt7" path="res://deck/discard_card.tscn" id="4_t70ea"]
+[ext_resource type="PackedScene" uid="uid://chtp4ocxeslqt" path="res://deck/dash_card.tscn" id="5_8bf70"]
 
 [node name="Library" type="Control"]
 visible = false
@@ -11,3 +15,84 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_swloc")
+
+[node name="AttackCard" parent="." instance=ExtResource("2_hcydh")]
+layout_mode = 0
+
+[node name="AttackCard2" parent="." instance=ExtResource("2_hcydh")]
+layout_mode = 0
+
+[node name="AttackCard3" parent="." instance=ExtResource("2_hcydh")]
+layout_mode = 0
+
+[node name="AttackCard4" parent="." instance=ExtResource("2_hcydh")]
+layout_mode = 0
+
+[node name="AttackCard5" parent="." instance=ExtResource("2_hcydh")]
+layout_mode = 0
+
+[node name="ShieldCard" parent="." instance=ExtResource("3_lf1wr")]
+layout_mode = 0
+
+[node name="ShieldCard2" parent="." instance=ExtResource("3_lf1wr")]
+layout_mode = 0
+
+[node name="ShieldCard3" parent="." instance=ExtResource("3_lf1wr")]
+layout_mode = 0
+
+[node name="ShieldCard4" parent="." instance=ExtResource("3_lf1wr")]
+layout_mode = 0
+
+[node name="ShieldCard5" parent="." instance=ExtResource("3_lf1wr")]
+layout_mode = 0
+
+[node name="DiscardCard" parent="." instance=ExtResource("4_t70ea")]
+layout_mode = 0
+
+[node name="DiscardCard2" parent="." instance=ExtResource("4_t70ea")]
+layout_mode = 0
+
+[node name="DiscardCard3" parent="." instance=ExtResource("4_t70ea")]
+layout_mode = 0
+
+[node name="DiscardCard4" parent="." instance=ExtResource("4_t70ea")]
+layout_mode = 0
+
+[node name="DiscardCard5" parent="." instance=ExtResource("4_t70ea")]
+layout_mode = 0
+
+[node name="DiscardCard6" parent="." instance=ExtResource("4_t70ea")]
+layout_mode = 0
+
+[node name="DashCard" parent="." instance=ExtResource("5_8bf70")]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 384.0
+
+[node name="DashCard2" parent="." instance=ExtResource("5_8bf70")]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 384.0
+
+[node name="DashCard3" parent="." instance=ExtResource("5_8bf70")]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 384.0
+
+[node name="DashCard4" parent="." instance=ExtResource("5_8bf70")]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 384.0
+
+[node name="DashCard5" parent="." instance=ExtResource("5_8bf70")]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 384.0
+
+[node name="DashCard6" parent="." instance=ExtResource("5_8bf70")]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 384.0
+
+[node name="DiscardCard7" parent="." instance=ExtResource("4_t70ea")]
+layout_mode = 0

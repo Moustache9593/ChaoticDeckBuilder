@@ -5,6 +5,8 @@ extends CharacterBody2D
 @export var max_health = 110
 
 @onready var player = get_player()
+var status_card = preload("res://deck/bomb_card.tscn")
+
 
 @onready var health = max_health:
 	set(value):
@@ -50,4 +52,13 @@ func take_damage(amount):
 func _on_hitbox_area_entered(area):
 	if area.is_in_group("player") and area.is_in_group("projectile"):
 		take_damage(area.damage)
+
+func get_player_deck():
+	return get_tree().get_first_node_in_group("deck")
+
+func _on_status_timer_timeout():
+	var deck = get_player_deck()
+	var bomb = status_card.instantiate()
+	var discard_pile = deck.get_node("DiscardPile")
+	discard_pile.add_child(bomb)
 
