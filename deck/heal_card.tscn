@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3nw4xkhbkwj3"]
+
+[ext_resource type="PackedScene" uid="uid://pu82ny6qd2u" path="res://deck/card.tscn" id="1_c8yp5"]
+
+[node name="HealCard" instance=ExtResource("1_c8yp5")]
+text = "Heal 15"
+title = "Heal"
+
+[node name="TitleRectangle" parent="MarginContainer/VSplitContainer" index="0"]
+text = "Heal"
+
+[node name="TextRectangle" parent="MarginContainer/VSplitContainer" index="2"]
+text = "Heal 15"

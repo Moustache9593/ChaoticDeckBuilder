@@ -9,6 +9,8 @@ var vector_to_mouse := Vector2.ZERO
 	set(value):
 		health = value
 		emit_signal("health_change",health)
+		if health <= 0:
+			die()
 
 var shield = 0:
 	set(value):
@@ -37,6 +39,10 @@ func get_move_dir():
 	return move_dir
 
 
+func die():
+	$DeathSoundEffect.detach()
+	queue_free()
+
 
 func _ready():
 	health = max_health
@@ -48,15 +54,25 @@ func take_damage(amount):
 		var health_lost = -shield
 		health -= health_lost
 		shield = 0
+	if health != 0:
+		$HurtSoundEffect.play()
 
 func gain_shield(amount):
 	shield += amount
+	$ShieldUpEffect.play()
+
+func heal(amount):
+	health += amount
+	if health > max_health:
+		health = max_health
+	$ShieldUpEffect.play()
 
 func dashing():
 	return not $DashTimer.is_stopped()
 
 func dash():
 	$DashTimer.start()
+	$DashSoundEffect.play()
 
 
 

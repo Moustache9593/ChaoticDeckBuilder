@@ -10,11 +10,10 @@ self_damage = 10
 text = "Take damage: 10
 "
 texture = ExtResource("3_3bog4")
+title = "Bomb"
 
 [node name="TitleRectangle" parent="MarginContainer/VSplitContainer" index="0"]
-text = "Bomb
-
-"
+text = "Bomb"
 
 [node name="ImageRectangle" parent="MarginContainer/VSplitContainer" index="1"]
 texture = ExtResource("3_3bog4")

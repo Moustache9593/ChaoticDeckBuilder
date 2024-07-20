@@ -22,21 +22,40 @@ func shoot_projectile(group, card):
 	add_child(projectile_child)
 	move_child(projectile_child, 0)
 	projectile_child.add_to_group(group)
+	$ShootEffect.play()
 
 
 func get_mouse_vector():
 	return get_global_mouse_position() - position 
 
 
+
+
+
+
 func _on_gui_card_used(card):
-	if "damage" in card:
-		shoot_projectile("player",card)
-	if "self_damage" in card:
-		player.take_damage(card.self_damage)
-	if "shield" in card:
-		player.gain_shield(card.shield)
-	if card.is_in_group("discard"):
-		pass
-	if card.is_in_group("dash"):
-		player.dash()
+	match card.title:
+		"Shoot":
+			shoot_projectile("player",card)
+		"Bomb":
+			if player != null:
+				player.take_damage(card.self_damage)
+		"Shield":
+			if player != null:
+				player.gain_shield(card.shield)
+		"Discard Left":
+			pass
+		"Discard Right":
+			pass
+		"Discard Both":
+			pass
+		"Dash":
+			if player != null:
+				player.dash()
+		"Heal":
+			if player != null:
+				player.heal(15)
+		_:
+			push_error("Invalid Card Title!")
+
 

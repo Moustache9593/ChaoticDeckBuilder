@@ -6,9 +6,9 @@ signal get_card
 signal card_held
 var card_currently_selected = 0
 var card_just_used = false
-var hand_size = 4
+var hand_size = 5
 @onready var hand_holder = $HBoxContainer/HandHolder
-@onready var card_hold = $HBoxContainer/CardHold
+@onready var card_hold_right = $HBoxContainer/CardHold
 
 
 func draw_card():
@@ -87,15 +87,16 @@ func discard_card(card):
 	hand_holder.remove_child(card)
 	emit_signal("card_discarded",card)
 
-func hold_card(card):
+func hold_card_right(card):
 	hand_holder.remove_child(card)
-	card_hold.add_child(card)
+	card_hold_right.add_child(card)
 
 func get_card_select_input():
 	var card1_select = Input.is_action_just_pressed("first_card")
 	var card2_select = Input.is_action_just_pressed("second_card")
 	var card3_select = Input.is_action_just_pressed("third_card")
 	var card4_select = Input.is_action_just_pressed("fourth_card")
+	var card5_select = Input.is_action_just_pressed("fifth_card")
 	var card_right_select = Input.is_action_just_pressed("card_right")
 	var card_left_select = Input.is_action_just_pressed("card_left")
 	if card1_select:
@@ -106,6 +107,8 @@ func get_card_select_input():
 		return 2
 	elif card4_select:
 		return 3
+	elif card5_select:
+		return 4
 	elif card_right_select:
 		return card_currently_selected + 1
 	elif card_left_select:
@@ -136,9 +139,9 @@ func get_currently_selected_card():
 func card_is_held():
 	return $HBoxContainer/CardHold.get_child_count() > 0
 
-func unhold_card():
-	var card = card_hold.get_child(0)
-	card_hold.remove_child(card)
+func unhold_card_right():
+	var card = card_hold_right.get_child(0)
+	card_hold_right.remove_child(card)
 	hand_holder.add_child(card)
 
 func hand_full():
@@ -157,9 +160,9 @@ func _physics_process(_delta):
 		use_card(card_currently_selected)
 	if get_hold_input():
 		if not card_is_held():
-			hold_card(get_currently_selected_card())
+			hold_card_right(get_currently_selected_card())
 		elif card_is_held():
-			unhold_card()
+			unhold_card_right()
 			use_card(get_last_index())
 	if hand_is_empty():
 		fill_hand()

@@ -10,11 +10,10 @@ shield = 5.0
 text = "Gain shield: 5
 "
 texture = ExtResource("3_dipeo")
+title = "Shield"
 
 [node name="TitleRectangle" parent="MarginContainer/VSplitContainer" index="0"]
-text = "Shield
-
-"
+text = "Shield"
 
 [node name="ImageRectangle" parent="MarginContainer/VSplitContainer" index="1"]
 texture = ExtResource("3_dipeo")

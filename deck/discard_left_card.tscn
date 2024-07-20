@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxta61hqxxcu5"]
+
+[ext_resource type="PackedScene" uid="uid://c6qe62ows8xt7" path="res://deck/discard_card.tscn" id="1_ijudu"]
+
+[node name="DiscardLeftCard" instance=ExtResource("1_ijudu")]
+title = "Discard Left"
+
+[node name="TitleRectangle" parent="MarginContainer/VSplitContainer" index="0"]
+text = "Discard Left"

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkb8hv8qs3s3g"]
+
+[ext_resource type="Script" path="res://helper/leave_when_signaled.gd" id="1_xucja"]
+
+[node name="LeaveWhenSignaled" type="Node2D"]
+script = ExtResource("1_xucja")

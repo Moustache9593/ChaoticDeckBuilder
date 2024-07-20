@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c55gh5wwb8v2y"]
 
 [ext_resource type="Script" path="res://gui/gui.gd" id="1_u6qhg"]
-[ext_resource type="PackedScene" path="./hand.tscn" id="2_6tk7o"]
+[ext_resource type="PackedScene" uid="uid://djqs4n3g0knt2" path="res://gui/hand.tscn" id="2_6tk7o"]
 [ext_resource type="PackedScene" uid="uid://ctxfndygcy7ce" path="res://gui/text_rectangle.tscn" id="2_lx4tv"]
 [ext_resource type="PackedScene" uid="uid://b0hgoap3fcyrf" path="res://deck/deck.tscn" id="3_ae7tt"]
 [ext_resource type="Texture2D" uid="uid://dvfobv12652bd" path="res://assets/textures/crossairs.png" id="4_6frls"]

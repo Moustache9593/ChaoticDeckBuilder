@@ -6,11 +6,10 @@
 [node name="DashCard" groups=["dash"] instance=ExtResource("1_tsw6j")]
 text = "Dash"
 texture = ExtResource("2_mlvgi")
+title = "Dash"
 
 [node name="TitleRectangle" parent="MarginContainer/VSplitContainer" index="0"]
-text = "Dash
-
-"
+text = "Dash"
 
 [node name="ImageRectangle" parent="MarginContainer/VSplitContainer" index="1"]
 texture = ExtResource("2_mlvgi")

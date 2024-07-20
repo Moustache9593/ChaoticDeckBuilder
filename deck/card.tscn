@@ -29,9 +29,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
-text = "Orange is real today man.
-
-"
+text = "Card"
 
 [node name="ImageRectangle" parent="MarginContainer/VSplitContainer" instance=ExtResource("2_57wtd")]
 layout_mode = 2

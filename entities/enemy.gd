@@ -24,14 +24,15 @@ func _physics_process(delta):
 const damage = 10
 const projectile_speed = 700
 func shoot_projectile(group):
-	var projectile_child = projectile.instantiate()
-	projectile_child.damage = damage
-	projectile_child.position = position
-	var projectile_direction = player.position - position
-	projectile_child.velocity = Vector2.RIGHT.rotated(projectile_direction.angle()) * projectile_speed
-	add_sibling(projectile_child)
-	projectile_child.add_to_group(group)
-	projectile_child.scale *= 14
+	if player != null:
+		var projectile_child = projectile.instantiate()
+		projectile_child.damage = damage
+		projectile_child.position = position
+		var projectile_direction = player.position - position
+		projectile_child.velocity = Vector2.RIGHT.rotated(projectile_direction.angle()) * projectile_speed
+		add_sibling(projectile_child)
+		projectile_child.add_to_group(group)
+		projectile_child.scale *= 14
 
 
 func get_player():
@@ -50,6 +51,8 @@ func _on_projectile_timer_timeout():
 
 func take_damage(amount):
 	health -= amount
+	if health != 0:
+		$HurtSoundEffect.play()
 
 func _on_hitbox_area_entered(area):
 	if area.is_in_group("player") and area.is_in_group("projectile"):

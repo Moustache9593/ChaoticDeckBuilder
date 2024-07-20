@@ -9,11 +9,10 @@ script = ExtResource("2_ey6oi")
 discard_directions = "left"
 text = "Discard card to left"
 texture = ExtResource("3_fdiv0")
+title = "Discard"
 
 [node name="TitleRectangle" parent="MarginContainer/VSplitContainer" index="0"]
-text = "Discard
-
-"
+text = "Discard"
 
 [node name="ImageRectangle" parent="MarginContainer/VSplitContainer" index="1"]
 texture = ExtResource("3_fdiv0")

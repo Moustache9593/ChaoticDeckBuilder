@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8muw21q46lch"]
+
+[ext_resource type="PackedScene" uid="uid://c6qe62ows8xt7" path="res://deck/discard_card.tscn" id="1_t0r0a"]
+
+[node name="DiscardBothCard" instance=ExtResource("1_t0r0a")]
+discard_directions = "both"
+text = "Discard left and right cards"
+title = "Discard Both"
+
+[node name="TitleRectangle" parent="MarginContainer/VSplitContainer" index="0"]
+text = "Discard Both"
+
+[node name="TextRectangle" parent="MarginContainer/VSplitContainer" index="2"]
+text = "Discard left and right cards"

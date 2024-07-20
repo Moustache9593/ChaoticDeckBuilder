@@ -11,11 +11,10 @@ speed = 800.0
 text = "Damage: 20
 Speed: 800"
 texture = ExtResource("3_d1wf6")
+title = "Shoot"
 
 [node name="TitleRectangle" parent="MarginContainer/VSplitContainer" index="0"]
-text = "Attack
-
-"
+text = "Shoot"
 
 [node name="ImageRectangle" parent="MarginContainer/VSplitContainer" index="1"]
 texture = ExtResource("3_d1wf6")
