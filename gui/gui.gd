@@ -57,3 +57,5 @@ func _on_player_shield_change(shield):
 func _on_hand_card_discarded(card):
 	$VSplitContainer/HandRect/HBoxContainer/Deck.add_to_discard_pile(card)
 
+
+

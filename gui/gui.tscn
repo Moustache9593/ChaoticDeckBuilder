@@ -72,6 +72,7 @@ text = "
 "
 
 [node name="Deck" parent="VSplitContainer/HandRect/HBoxContainer" instance=ExtResource("3_ae7tt")]
+visible = false
 layout_mode = 2
 
 [node name="Hand" parent="VSplitContainer/HandRect/HBoxContainer" instance=ExtResource("2_6tk7o")]

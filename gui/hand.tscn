@@ -3,13 +3,22 @@
 [ext_resource type="Script" path="res://gui/hand.gd" id="1_nhpi7"]
 
 [node name="Hand" type="ColorRect"]
-custom_minimum_size = Vector2(798, 384)
+custom_minimum_size = Vector2(990, 384)
 offset_left = 606.0
 offset_right = 606.0
 offset_bottom = 384.0
 color = Color(0.192157, 0.152941, 1, 1)
 script = ExtResource("1_nhpi7")
 
-[node name="HandHolder" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HandHolder" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
 theme_override_constants/separation = 10
+
+[node name="CardHold" type="CenterContainer" parent="HBoxContainer"]
+modulate = Color(0.480069, 0.704941, 0.181987, 1)
+layout_mode = 2
