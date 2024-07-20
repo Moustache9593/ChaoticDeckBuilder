@@ -18,7 +18,7 @@ offset_bottom = 768.0
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_p1pc0")]
-position = Vector2(143, 176)
+position = Vector2(52, 183)
 speed = 75.0
 dash_speed = 600.0
 

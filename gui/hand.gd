@@ -158,13 +158,16 @@ func _physics_process(_delta):
 	if get_hold_input():
 		if not card_is_held():
 			hold_card(get_currently_selected_card())
-		elif not hand_full() and card_is_held():
+		elif card_is_held():
 			unhold_card()
+			use_card(get_last_index())
 	if hand_is_empty():
 		fill_hand()
-	
+
+func get_last_card():
+	return hand_holder.get_child(hand_holder.get_child_count()-1)
 
 
-
-
+func get_last_index():
+	return hand_holder.get_child_count()-1
 

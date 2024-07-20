@@ -73,3 +73,4 @@ func _physics_process(_delta):
 func _on_hit_box_area_entered(area):
 	if area.is_in_group("enemy") and area.is_in_group("projectile"):
 		take_damage(area.damage)
+		area.queue_free()
