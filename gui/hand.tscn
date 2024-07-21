@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://djqs4n3g0knt2"]
+[gd_scene load_steps=3 format=3 uid="uid://djqs4n3g0knt2"]
 
 [ext_resource type="Script" path="res://gui/hand.gd" id="1_nhpi7"]
+[ext_resource type="AudioStream" uid="uid://cnyrimug354ao" path="res://assets/sounds/effects/error.wav" id="2_xw0cb"]
 
 [node name="Hand" type="ColorRect"]
 custom_minimum_size = Vector2(1182, 384)
@@ -27,3 +28,17 @@ theme_override_constants/separation = 10
 [node name="CardHoldRight" type="CenterContainer" parent="HBoxContainer"]
 modulate = Color(0.480069, 0.704941, 0.181987, 1)
 layout_mode = 2
+
+[node name="ChuckTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="FillTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="ManaErrorSoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_xw0cb")
+
+[connection signal="timeout" from="ChuckTimer" to="." method="_on_chuck_timer_timeout"]
+[connection signal="timeout" from="FillTimer" to="." method="_on_fill_timer_timeout"]

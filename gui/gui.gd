@@ -2,7 +2,8 @@
 extends Control
 signal card_used
 signal discarded_card
-
+signal give_me_mana
+signal chucked_card
 func _ready():
 	set_deferred("size",get_window().size)
 	pass
@@ -26,13 +27,15 @@ func set_player_title(value):
 
 func set_health_text(value):
 	$VSplitContainer/PlayerStatus/HealthText.text =\
-	 "health: " + value
+	 "Health: " + value
 
 func set_shield_text(value):
 	$VSplitContainer/PlayerStatus/ShieldText.text =\
-	 "shield: " + value
+	 "Shield: " + value
 
-
+func set_mana_text(value):
+	$VSplitContainer/PlayerStatus/ManaText.text =\
+	 "Mana: " + str(value)
 
 
 func _on_hand_card_used(card):
@@ -61,3 +64,15 @@ func _on_hand_card_discarded(card):
 
 
 
+
+
+
+
+func _on_hand_mana_changed(mana):
+	set_mana_text(mana)
+
+
+
+func _on_hand_chucked_card(card):
+	emit_signal("chucked_card",card)
+	$VSplitContainer/HandRect/HBoxContainer/Deck.add_to_discard_pile(card)

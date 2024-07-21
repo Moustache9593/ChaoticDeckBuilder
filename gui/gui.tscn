@@ -58,7 +58,7 @@ size_flags_vertical = 3
 text = "Shield
 "
 
-[node name="BlankText" parent="VSplitContainer/PlayerStatus" instance=ExtResource("2_lx4tv")]
+[node name="ManaText" parent="VSplitContainer/PlayerStatus" instance=ExtResource("2_lx4tv")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -93,4 +93,6 @@ texture = ExtResource("4_6frls")
 
 [connection signal="card_discarded" from="VSplitContainer/HandRect/HBoxContainer/Hand" to="." method="_on_hand_card_discarded"]
 [connection signal="card_used" from="VSplitContainer/HandRect/HBoxContainer/Hand" to="." method="_on_hand_card_used"]
+[connection signal="chucked_card" from="VSplitContainer/HandRect/HBoxContainer/Hand" to="." method="_on_hand_chucked_card"]
 [connection signal="get_card" from="VSplitContainer/HandRect/HBoxContainer/Hand" to="VSplitContainer/HandRect/HBoxContainer/Deck" method="give_card"]
+[connection signal="mana_changed" from="VSplitContainer/HandRect/HBoxContainer/Hand" to="." method="_on_hand_mana_changed"]

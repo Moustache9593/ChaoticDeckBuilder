@@ -32,7 +32,6 @@ func get_mouse_vector():
 
 
 
-
 func _on_gui_card_used(card):
 	match card.title:
 		"Shoot":
@@ -61,6 +60,7 @@ func _on_gui_card_used(card):
 				player.heal(15)
 		_:
 			push_error("Invalid Card Title!")
+	
 
 
 
@@ -69,4 +69,13 @@ func _on_gui_discarded_card(card):
 	if card.title == "Dangerous Shield":
 		if player != null:
 			player.take_damage(card.self_damage)
+
+	pass # Replace with function body.
+
+
+
+func _on_gui_chucked_card(card):
+	if card.title == "Bomb":
+		if player != null:
+			player.take_damage(card.chuck_damage)
 	pass # Replace with function body.

@@ -41,6 +41,12 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "Placeholderfff"
 
+[node name="ManaCostText" parent="MarginContainer/VSplitContainer" instance=ExtResource("1_xowc1")]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+text = "Mana Cost: 1"
+
 [node name="CardBack" type="ColorRect" parent="MarginContainer"]
 visible = false
 layout_mode = 2

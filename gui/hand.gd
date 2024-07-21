@@ -2,13 +2,26 @@ extends ColorRect
 @export var inputs :PackedStringArray= []
 signal card_used
 signal card_discarded
+signal give_card
 signal get_card
+signal mana_changed
+signal chucked_card
 var card_currently_selected = 0
 var card_just_used = false
 var hand_size = 5
 @onready var hand_holder = $HBoxContainer/HandHolder
 @onready var card_hold_right = $HBoxContainer/CardHoldRight
 @onready var card_hold_left = $HBoxContainer/CardHoldLeft
+var mana_holder = self
+@export var max_mana = 5
+var mana = max_mana:
+	set(value):
+		mana = value
+		emit_signal("mana_changed",mana)
+
+
+
+
 
 
 func draw_card():
@@ -24,8 +37,10 @@ func unselect_cards():
 func fill_hand():
 	for i in range(hand_size):
 		draw_card()
+	mana = max_mana
 
 func _ready():
+	mana=max_mana
 	fill_hand()
 	select_card(card_currently_selected)
 
@@ -68,9 +83,29 @@ func get_right_card(card):
 	else:
 		return null
 
-func use_card(card_index):
+
+
+func chuck_hand():
+	for card in hand_holder.get_children():
+		chuck_card(card)
+	fill_hand()
+	
+
+
+func try_get_card(card_index, card):
 	if hand_holder.get_child_count() >= card_index + 1:
-		var card = hand_holder.get_child(card_index)
+		card.append(hand_holder.get_child(card_index))
+		return true 
+	else:
+		return false
+
+
+
+
+func use_card(card_index):
+	var card = []
+	if try_get_card(card_index,card) and card[0].mana_cost <= mana:
+		card = card[0]
 		if card.is_in_group("discard"):
 			var left_card = get_left_card(card)
 			var right_card = get_right_card(card)
@@ -82,12 +117,19 @@ func use_card(card_index):
 			card.discard_directions == "both") and right_card != null:
 				discard_card(right_card)
 		card_just_used = true
+		mana -= card.mana_cost
 		hand_holder.remove_child(card)
 		emit_signal("card_used",card)
+	elif try_get_card(card_index,card) and card[0].mana_cost > mana:
+		$ManaErrorSoundEffect.play()
 	elif hand_holder.get_child_count() < 1:
 		push_warning("Tried to use card when hand is empty.")
 	elif hand_holder.get_child_count() < card_index + 1:
 		push_warning("Tried to use card that isn't in hand.")
+
+func chuck_card(card):
+	hand_holder.remove_child(card)
+	emit_signal("chucked_card",card)
 
 func discard_card(card):
 	hand_holder.remove_child(card)
@@ -152,22 +194,32 @@ func left_card_is_held():
 func right_card_is_held():
 	return card_hold_right.get_child_count() > 0
 
-func unhold_card_right():
-	var card = card_hold_right.get_child(0)
-	card_hold_right.remove_child(card)
-	hand_holder.add_child(card)
-	
+func try_unhold_card(is_right):
+	var card
+	if is_right:
+		card = card_hold_right.get_child(0)
+	else:
+		card = card_hold_left.get_child(0)
+	if card.mana_cost <= mana:
+		if is_right:
+			card_hold_right.remove_child(card)
+		else:
+			card_hold_left.remove_child(card)
+		hand_holder.add_child(card)
+		if is_right:
+			hand_holder.move_child(card,get_last_index())
+		return true
+	else:
+		$ManaErrorSoundEffect.play()
+		return false
 
-func unhold_card_left():
-	var card = card_hold_left.get_child(0)
-	card_hold_left.remove_child(card)
-	hand_holder.add_child(card)
-	hand_holder.move_child(card,0)
+
 
 func hand_full():
 	return hand_holder.get_child_count() >= hand_size
 
-func _physics_process(_delta):
+
+func handle_card_selection():
 	var card_selected = get_card_select_input()
 	if card_currently_selected > hand_holder.get_child_count() - 1 and \
 	not hand_is_empty():
@@ -176,22 +228,30 @@ func _physics_process(_delta):
 		select_card(card_currently_selected)
 	if card_selected != -1:
 		select_card(card_selected)
-	if get_use_card_input():
-		use_card(card_currently_selected)
-	if get_hold_right_input() and !hand_is_empty():
+
+func handle_card_hold():
+
+	if get_hold_right_input():
 		if not right_card_is_held():
 			hold_card_right(get_currently_selected_card())
 		elif right_card_is_held():
-			unhold_card_right()
-			use_card(get_last_index())
-	if get_hold_left_input() and !hand_is_empty():
+			if try_unhold_card(true):
+				use_card(get_last_index())
+	elif get_hold_left_input():
 		if not left_card_is_held():
 			hold_card_left(get_currently_selected_card())
 		elif left_card_is_held():
-			unhold_card_left()
-			use_card(get_first_index())
-	if hand_is_empty():
-		fill_hand()
+			if try_unhold_card(false):
+				use_card(get_first_index())
+
+func _physics_process(_delta):
+	if get_chuck_hand_input() and not chucking() and not filling_hand():
+		$ChuckTimer.start()
+	elif not chucking() and not filling_hand():
+		handle_card_selection()
+		handle_card_hold()
+		if get_use_card_input():
+			use_card(card_currently_selected)
 
 func get_last_card():
 	return hand_holder.get_child(hand_holder.get_child_count()-1)
@@ -201,4 +261,19 @@ func get_first_index():
 
 func get_last_index():
 	return hand_holder.get_child_count()-1
+
+func chucking():
+	return not $ChuckTimer.is_stopped()
+
+
+func filling_hand():
+	return not $FillTimer.is_stopped()
+
+func _on_chuck_timer_timeout():
+	chuck_hand()
+
+
+
+func _on_fill_timer_timeout():
+	fill_hand()
 

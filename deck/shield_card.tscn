@@ -11,6 +11,7 @@ text = "Gain shield: 5
 "
 texture = ExtResource("3_dipeo")
 title = "Shield"
+mana_cost = 2
 
 [node name="TitleRectangle" parent="MarginContainer/VSplitContainer" index="0"]
 text = "Shield"
@@ -21,3 +22,6 @@ texture = ExtResource("3_dipeo")
 [node name="TextRectangle" parent="MarginContainer/VSplitContainer" index="2"]
 text = "Gain shield: 5
 "
+
+[node name="ManaCostText" parent="MarginContainer/VSplitContainer" index="3"]
+text = "Mana Cost: 2"

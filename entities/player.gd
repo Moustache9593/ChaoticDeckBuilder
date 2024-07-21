@@ -1,9 +1,11 @@
 extends CharacterBody2D
 signal health_change
 signal shield_change
+signal mana_change
 
 var move_dir := Vector2.ZERO
 var vector_to_mouse := Vector2.ZERO
+var dead = false
 @export var max_health = 50
 @onready var health = 0:
 	set(value):
@@ -11,6 +13,8 @@ var vector_to_mouse := Vector2.ZERO
 		emit_signal("health_change",health)
 		if health <= 0:
 			die()
+
+
 
 var shield = 0:
 	set(value):
@@ -27,8 +31,7 @@ func get_mouse_vector():
 func get_input():
 	get_move_dir()
 	get_mouse_vector()
-	if Input.is_action_just_pressed("chuck_hand"):
-		dash()
+
 
 func get_move_dir():
 	var move_x = float(Input.is_action_pressed("move_right")) - \
@@ -40,8 +43,11 @@ func get_move_dir():
 
 
 func die():
-	$DeathSoundEffect.detach()
-	queue_free()
+	if not dead:
+		$DeathSoundEffect.detach()
+		queue_free()
+		dead = true
+		get_tree().reload_current_scene()
 
 
 func _ready():

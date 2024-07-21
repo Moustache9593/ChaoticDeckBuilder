@@ -7,6 +7,7 @@
 text = "Dash"
 texture = ExtResource("2_mlvgi")
 title = "Dash"
+mana_cost = 2
 
 [node name="TitleRectangle" parent="MarginContainer/VSplitContainer" index="0"]
 text = "Dash"
@@ -16,3 +17,6 @@ texture = ExtResource("2_mlvgi")
 
 [node name="TextRectangle" parent="MarginContainer/VSplitContainer" index="2"]
 text = "Dash"
+
+[node name="ManaCostText" parent="MarginContainer/VSplitContainer" index="3"]
+text = "Mana Cost: 2"

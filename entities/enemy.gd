@@ -14,7 +14,7 @@ var current_action = "invalid"
 		health = value
 		$HealthBar.value = (health/max_health) * 100
 		$HealthBar/HealthText.text = str(health)
-		if health < 0:
+		if health <= 0:
 			call_deferred("queue_free")
 
 func _ready():
@@ -23,7 +23,7 @@ func _physics_process(delta):
 	physics_process(delta)
 
 const damage = 20
-const projectile_speed = 700
+const projectile_speed = 900
 func shoot_projectile(group):
 	if player != null:
 		var projectile_child = projectile.instantiate()
@@ -33,7 +33,7 @@ func shoot_projectile(group):
 		projectile_child.velocity = Vector2.RIGHT.rotated(projectile_direction.angle()) * projectile_speed
 		add_sibling(projectile_child)
 		projectile_child.add_to_group(group)
-		projectile_child.scale *= 14
+		projectile_child.scale *= 13
 
 
 func get_player():

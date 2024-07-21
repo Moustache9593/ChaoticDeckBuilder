@@ -7,10 +7,11 @@
 [node name="BombCard" instance=ExtResource("1_ex3te")]
 script = ExtResource("2_p7mrp")
 self_damage = 20
-text = "Take damage: 20
-"
+chuck_damage = 10
+text = "On Chuck: Take damage: 10"
 texture = ExtResource("3_3bog4")
 title = "Bomb"
+mana_cost = 0
 
 [node name="TitleRectangle" parent="MarginContainer/VSplitContainer" index="0"]
 text = "Bomb"
@@ -19,5 +20,7 @@ text = "Bomb"
 texture = ExtResource("3_3bog4")
 
 [node name="TextRectangle" parent="MarginContainer/VSplitContainer" index="2"]
-text = "Take damage: 20
-"
+text = "On Chuck: Take damage: 10"
+
+[node name="ManaCostText" parent="MarginContainer/VSplitContainer" index="3"]
+text = "Mana Cost: 0"

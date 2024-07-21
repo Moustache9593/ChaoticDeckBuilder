@@ -5,9 +5,13 @@
 [node name="HealCard" instance=ExtResource("1_c8yp5")]
 text = "Heal 15"
 title = "Heal"
+mana_cost = 3
 
 [node name="TitleRectangle" parent="MarginContainer/VSplitContainer" index="0"]
 text = "Heal"
 
 [node name="TextRectangle" parent="MarginContainer/VSplitContainer" index="2"]
 text = "Heal 15"
+
+[node name="ManaCostText" parent="MarginContainer/VSplitContainer" index="3"]
+text = "Mana Cost: 3"
