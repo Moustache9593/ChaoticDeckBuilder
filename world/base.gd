@@ -79,3 +79,9 @@ func _on_gui_chucked_card(card):
 		if player != null:
 			player.take_damage(card.chuck_damage)
 	pass # Replace with function body.
+
+
+func _on_gui_filled_hand():
+	if player != null:
+		player.lose_all_shield()
+

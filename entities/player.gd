@@ -63,6 +63,9 @@ func take_damage(amount):
 	if health != 0:
 		$HurtSoundEffect.play()
 
+func lose_all_shield():
+	shield = 0
+
 func gain_shield(amount):
 	shield += amount
 	$ShieldUpEffect.play()

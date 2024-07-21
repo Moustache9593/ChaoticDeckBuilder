@@ -1,14 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://dd554s177mkgw"]
+[gd_scene load_steps=9 format=3 uid="uid://dd554s177mkgw"]
 
 [ext_resource type="Script" path="res://deck/library.gd" id="1_swloc"]
 [ext_resource type="PackedScene" uid="uid://c40kraakerhsq" path="res://deck/attack_card.tscn" id="2_hcydh"]
+[ext_resource type="PackedScene" uid="uid://bsmcb4prd7np6" path="res://deck/shield_card.tscn" id="3_lf1wr"]
 [ext_resource type="PackedScene" uid="uid://chtp4ocxeslqt" path="res://deck/dash_card.tscn" id="5_8bf70"]
 [ext_resource type="PackedScene" uid="uid://b8muw21q46lch" path="res://deck/discard_both_card.tscn" id="6_nmh1g"]
 [ext_resource type="PackedScene" uid="uid://bxta61hqxxcu5" path="res://deck/discard_left_card.tscn" id="7_4byk3"]
 [ext_resource type="PackedScene" uid="uid://dc7qpvjhao3bt" path="res://deck/discard_right_card.tscn" id="7_8t1hs"]
-[ext_resource type="PackedScene" uid="uid://co7y411rpi67c" path="res://deck/dangerous_shield.tscn" id="8_kh4ia"]
 [ext_resource type="PackedScene" uid="uid://c3nw4xkhbkwj3" path="res://deck/heal_card.tscn" id="8_pkykj"]
-[ext_resource type="PackedScene" uid="uid://b3k6lvvg2fcfk" path="res://deck/bomb_card.tscn" id="9_cyg5u"]
 
 [node name="Library" type="Control"]
 visible = false
@@ -68,15 +67,6 @@ layout_mode = 0
 [node name="DiscardRightCard3" parent="." instance=ExtResource("7_8t1hs")]
 layout_mode = 0
 
-[node name="ShieldDiscardBad" parent="." instance=ExtResource("8_kh4ia")]
-layout_mode = 0
-
-[node name="ShieldDiscardBad2" parent="." instance=ExtResource("8_kh4ia")]
-layout_mode = 0
-
-[node name="ShieldDiscardBad3" parent="." instance=ExtResource("8_kh4ia")]
-layout_mode = 0
-
 [node name="DashCard" parent="." instance=ExtResource("5_8bf70")]
 layout_mode = 0
 
@@ -89,11 +79,23 @@ layout_mode = 0
 [node name="HealCard" parent="." instance=ExtResource("8_pkykj")]
 layout_mode = 0
 
-[node name="BombCard" parent="." instance=ExtResource("9_cyg5u")]
+[node name="ShieldCard" parent="." instance=ExtResource("3_lf1wr")]
 layout_mode = 0
 
-[node name="BombCard2" parent="." instance=ExtResource("9_cyg5u")]
+[node name="ShieldCard2" parent="." instance=ExtResource("3_lf1wr")]
 layout_mode = 0
 
-[node name="BombCard3" parent="." instance=ExtResource("9_cyg5u")]
+[node name="ShieldCard3" parent="." instance=ExtResource("3_lf1wr")]
+layout_mode = 0
+
+[node name="ShieldCard4" parent="." instance=ExtResource("3_lf1wr")]
+layout_mode = 0
+
+[node name="ShieldCard5" parent="." instance=ExtResource("3_lf1wr")]
+layout_mode = 0
+
+[node name="ShieldCard6" parent="." instance=ExtResource("3_lf1wr")]
+layout_mode = 0
+
+[node name="ShieldCard7" parent="." instance=ExtResource("3_lf1wr")]
 layout_mode = 0

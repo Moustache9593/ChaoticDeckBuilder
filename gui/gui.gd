@@ -4,6 +4,7 @@ signal card_used
 signal discarded_card
 signal give_me_mana
 signal chucked_card
+signal filled_hand
 func _ready():
 	set_deferred("size",get_window().size)
 	pass
@@ -76,3 +77,8 @@ func _on_hand_mana_changed(mana):
 func _on_hand_chucked_card(card):
 	emit_signal("chucked_card",card)
 	$VSplitContainer/HandRect/HBoxContainer/Deck.add_to_discard_pile(card)
+
+
+func _on_hand_filled_hand():
+	emit_signal("filled_hand")
+	pass # Replace with function body.

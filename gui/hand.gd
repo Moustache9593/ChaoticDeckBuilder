@@ -6,6 +6,7 @@ signal give_card
 signal get_card
 signal mana_changed
 signal chucked_card
+signal filled_hand
 var card_currently_selected = 0
 var card_just_used = false
 var hand_size = 5
@@ -37,7 +38,7 @@ func unselect_cards():
 func fill_hand():
 	for i in range(hand_size):
 		draw_card()
-	mana = max_mana
+	emit_signal("filled_hand")
 
 func _ready():
 	mana=max_mana
@@ -253,11 +254,12 @@ func handle_card_hold():
 				use_card(get_first_index())
 
 func _physics_process(_delta):
-	if get_chuck_hand_input() and not chucking() and not filling_hand():
+	if get_chuck_hand_input() and not chucking():
 		$ChuckTimer.start()
-	elif not chucking() and not filling_hand():
+		mana = max_mana
+	handle_card_hold()
+	if not chucking():
 		handle_card_selection()
-		handle_card_hold()
 		if get_use_card_input():
 			use_card(card_currently_selected)
 
@@ -274,14 +276,9 @@ func chucking():
 	return not $ChuckTimer.is_stopped()
 
 
-func filling_hand():
-	return not $FillTimer.is_stopped()
 
 func _on_chuck_timer_timeout():
 	chuck_hand()
 
 
-
-func _on_fill_timer_timeout():
-	fill_hand()
 

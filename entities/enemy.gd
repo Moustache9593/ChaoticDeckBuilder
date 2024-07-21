@@ -22,7 +22,7 @@ func _ready():
 func _physics_process(delta):
 	physics_process(delta)
 
-const damage = 20
+const damage = 30
 const projectile_speed = 900
 func shoot_projectile(group):
 	if player != null:
@@ -87,6 +87,7 @@ func _on_action_timer_timeout():
 		"attack":
 			shoot_projectile("enemy")
 		"status":
+			_on_status_timer_timeout()
 			_on_status_timer_timeout()
 		_:
 			push_error("Invalid enemy action!")

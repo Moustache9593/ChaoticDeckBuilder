@@ -30,15 +30,10 @@ modulate = Color(0.480069, 0.704941, 0.181987, 1)
 layout_mode = 2
 
 [node name="ChuckTimer" type="Timer" parent="."]
-wait_time = 0.25
-one_shot = true
-
-[node name="FillTimer" type="Timer" parent="."]
-wait_time = 0.25
+wait_time = 2.0
 one_shot = true
 
 [node name="ManaErrorSoundEffect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_xw0cb")
 
 [connection signal="timeout" from="ChuckTimer" to="." method="_on_chuck_timer_timeout"]
-[connection signal="timeout" from="FillTimer" to="." method="_on_fill_timer_timeout"]

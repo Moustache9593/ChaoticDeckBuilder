@@ -22,13 +22,13 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_p1pc0")]
 position = Vector2(52, 183)
-max_health = 100000000
+max_health = 75
 speed = 75.0
 dash_speed = 600.0
 
 [node name="Enemy" parent="." instance=ExtResource("5_c8ymd")]
 position = Vector2(1285, 149)
-max_health = 200.0
+max_health = 250.0
 
 [node name="ShootEffect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_iy2bt")
@@ -39,6 +39,7 @@ stream = ExtResource("7_pfo8h")
 [connection signal="card_used" from="GUI" to="." method="_on_gui_card_used"]
 [connection signal="chucked_card" from="GUI" to="." method="_on_gui_chucked_card"]
 [connection signal="discarded_card" from="GUI" to="." method="_on_gui_discarded_card"]
+[connection signal="filled_hand" from="GUI" to="." method="_on_gui_filled_hand"]
 [connection signal="give_me_mana" from="GUI" to="." method="_on_gui_give_me_mana"]
 [connection signal="health_change" from="Player" to="GUI" method="_on_player_health_change"]
 [connection signal="shield_change" from="Player" to="GUI" method="_on_player_shield_change"]

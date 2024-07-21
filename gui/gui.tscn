@@ -94,5 +94,6 @@ texture = ExtResource("4_6frls")
 [connection signal="card_discarded" from="VSplitContainer/HandRect/HBoxContainer/Hand" to="." method="_on_hand_card_discarded"]
 [connection signal="card_used" from="VSplitContainer/HandRect/HBoxContainer/Hand" to="." method="_on_hand_card_used"]
 [connection signal="chucked_card" from="VSplitContainer/HandRect/HBoxContainer/Hand" to="." method="_on_hand_chucked_card"]
+[connection signal="filled_hand" from="VSplitContainer/HandRect/HBoxContainer/Hand" to="." method="_on_hand_filled_hand"]
 [connection signal="get_card" from="VSplitContainer/HandRect/HBoxContainer/Hand" to="VSplitContainer/HandRect/HBoxContainer/Deck" method="give_card"]
 [connection signal="mana_changed" from="VSplitContainer/HandRect/HBoxContainer/Hand" to="." method="_on_hand_mana_changed"]
