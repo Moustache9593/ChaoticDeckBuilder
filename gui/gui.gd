@@ -9,7 +9,7 @@ signal filled_hand
 @onready var deck = $VSplitContainer/HandRect/Deck
 
 func _ready():
-	set_deferred("size",get_window().size)
+	#set_deferred("size",get_window().size)
 	pass
 
 

@@ -21,7 +21,7 @@ texture = ExtResource("3_hjqtp")
 
 [node name="TextRectangle" parent="MarginContainer/VSplitContainer" index="2"]
 text = "
-Exile cards to right and left.
+Remove left and right cards from deck.
 Damage: 50"
 
 [node name="ManaCostText" parent="MarginContainer/VSplitContainer" index="3"]
