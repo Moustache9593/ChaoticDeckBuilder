@@ -12,8 +12,9 @@ func _process(_delta):
 	pass
 
 func shoot_projectile(group, card):
-	$Enemy.take_damage(card.damage)
-	$ShootEffect.play()
+	if $Enemy != null:
+		$Enemy.take_damage(card.damage)
+		$ShootEffect.play()
 
 
 func get_mouse_vector():
@@ -75,7 +76,4 @@ func _on_gui_chucked_card(card):
 
 
 
-func _on_gui_filled_hand():
-	if player!=null:
-		player.shield/=8
-	pass # Replace with function body.
+

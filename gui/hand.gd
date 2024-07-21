@@ -14,7 +14,7 @@ var hand_size = 5
 @onready var card_hold_right = $HBoxContainer/CardHoldRight
 @onready var card_hold_left = $HBoxContainer/CardHoldLeft
 var mana_holder = self
-@export var max_mana = 7
+@export var max_mana = 15
 var mana = max_mana:
 	set(value):
 		mana = value

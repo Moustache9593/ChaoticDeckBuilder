@@ -16,7 +16,7 @@ radius = 34.0588
 script = ExtResource("1_edfrd")
 
 [node name="ActionTimer" type="Timer" parent="."]
-wait_time = 12.0
+wait_time = 3.0
 autostart = true
 
 [node name="ActionBar" type="ProgressBar" parent="."]
