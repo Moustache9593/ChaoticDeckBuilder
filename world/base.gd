@@ -1,5 +1,6 @@
 extends Node2D
 @export var projectile := preload("res://entities/projectile.tscn")
+@export var adder_timer_base := preload("res://helper/adder_timer.tscn")
 var player
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,17 +12,7 @@ func _process(_delta):
 	pass
 
 func shoot_projectile(group, card):
-	var projectile_child = projectile.instantiate()
-	var speed = 600
-	if "speed" in card:
-			speed = card.speed
-	projectile_child.damage = card.damage
-	projectile_child.position = player.position
-	var projectile_direction = get_mouse_vector() - player.position
-	projectile_child.velocity = Vector2.RIGHT.rotated(projectile_direction.angle()) * speed
-	add_child(projectile_child)
-	move_child(projectile_child, 0)
-	projectile_child.add_to_group(group)
+	$Enemy.take_damage(card.damage)
 	$ShootEffect.play()
 
 
@@ -53,11 +44,10 @@ func _on_gui_card_used(card):
 		"Discard Both":
 			$DiscardEffect.play()
 		"Dash":
-			if player != null:
-				player.dash()
+			pass
 		"Heal":
 			if player != null:
-				player.heal(15)
+				player.heal(10)
 		_:
 			push_error("Invalid Card Title!")
 	
@@ -81,7 +71,11 @@ func _on_gui_chucked_card(card):
 	pass # Replace with function body.
 
 
-func _on_gui_filled_hand():
-	if player != null:
-		player.lose_all_shield()
 
+
+
+
+func _on_gui_filled_hand():
+	if player!=null:
+		player.shield/=8
+	pass # Replace with function body.

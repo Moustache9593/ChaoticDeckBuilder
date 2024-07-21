@@ -6,8 +6,8 @@
 
 [node name="ShieldCard" instance=ExtResource("1_4mi8h")]
 script = ExtResource("2_ovxv2")
-shield = 20.0
-text = "Gain shield: 20
+shield = 15.0
+text = "Gain shield: 15
 "
 texture = ExtResource("3_dipeo")
 title = "Shield"
@@ -20,7 +20,7 @@ text = "Shield"
 texture = ExtResource("3_dipeo")
 
 [node name="TextRectangle" parent="MarginContainer/VSplitContainer" index="2"]
-text = "Gain shield: 20
+text = "Gain shield: 15
 "
 
 [node name="ManaCostText" parent="MarginContainer/VSplitContainer" index="3"]

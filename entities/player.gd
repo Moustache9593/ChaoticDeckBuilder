@@ -85,15 +85,6 @@ func dash():
 
 
 
-func _physics_process(_delta):
-	if not dashing():
-		get_input()
-		velocity = move_dir * speed
-	else:
-		velocity = move_dir * dash_speed
-	move_and_slide()
-	$Stick.rotation = vector_to_mouse.angle()
-
 
 func _on_hit_box_area_entered(area):
 	if area.is_in_group("enemy") and area.is_in_group("projectile"):

@@ -14,7 +14,7 @@ var hand_size = 5
 @onready var card_hold_right = $HBoxContainer/CardHoldRight
 @onready var card_hold_left = $HBoxContainer/CardHoldLeft
 var mana_holder = self
-@export var max_mana = 5
+@export var max_mana = 7
 var mana = max_mana:
 	set(value):
 		mana = value
@@ -150,8 +150,8 @@ func get_card_select_input():
 	var card3_select = Input.is_action_just_pressed("third_card")
 	var card4_select = Input.is_action_just_pressed("fourth_card")
 	var card5_select = Input.is_action_just_pressed("fifth_card")
-	var card_right_select = Input.is_action_just_pressed("card_right")
-	var card_left_select = Input.is_action_just_pressed("card_left")
+	#var card_right_select = Input.is_action_just_pressed("card_right")
+	#var card_left_select = Input.is_action_just_pressed("card_left")
 	if card1_select:
 		return 0
 	elif card2_select:
@@ -162,10 +162,10 @@ func get_card_select_input():
 		return 3
 	elif card5_select:
 		return 4
-	elif card_right_select:
-		return card_currently_selected + 1
-	elif card_left_select:
-		return card_currently_selected - 1
+	#elif card_right_select:
+		#return card_currently_selected + 1
+	#elif card_left_select:
+		#return card_currently_selected - 1
 	else:
 		return -1
 
@@ -223,14 +223,11 @@ func hand_full():
 
 
 func handle_card_selection():
-	var card_selected = get_card_select_input()
-	if card_currently_selected > hand_holder.get_child_count() - 1 and \
-	not hand_is_empty():
-		card_currently_selected = hand_holder.get_child_count() - 1
-	if card_just_used:
-		select_card(card_currently_selected)
-	if card_selected != -1:
-		select_card(card_selected)
+	unselect_cards()
+	for card in hand_holder.get_children():
+		if card.mouse_in_card:
+			select_card(card.get_index())
+
 
 func try_deduct_hold_mana():
 	if mana >= 1:
@@ -241,13 +238,13 @@ func try_deduct_hold_mana():
 
 func handle_card_hold():
 	if get_hold_right_input():
-		if not right_card_is_held() and try_deduct_hold_mana():
+		if not right_card_is_held() and not chucking() and try_deduct_hold_mana():
 			hold_card_right(get_currently_selected_card())
 		elif right_card_is_held():
 			if try_unhold_card(true):
 				use_card(get_last_index())
 	elif get_hold_left_input():
-		if not left_card_is_held() and try_deduct_hold_mana():
+		if not left_card_is_held() and not chucking() and try_deduct_hold_mana():
 			hold_card_left(get_currently_selected_card())
 		elif left_card_is_held():
 			if try_unhold_card(false):
@@ -262,6 +259,24 @@ func _physics_process(_delta):
 		handle_card_selection()
 		if get_use_card_input():
 			use_card(card_currently_selected)
+
+
+func try_mouse_use_card():
+	if Input.is_action_just_pressed("click_use_card"):
+		for card in hand_holder.get_children():
+			if card.mouse_in_card:
+				use_card(card.get_index())
+				return true
+		return false
+
+func try_mouse_hold_card():
+	if Input.is_action_just_pressed("click_hold_card") and not right_card_is_held():
+		for card in hand_holder.get_children():
+			if card.mouse_in_card:
+				hold_card_right(card)
+				return true
+		return false
+
 
 func get_last_card():
 	return hand_holder.get_child(hand_holder.get_child_count()-1)

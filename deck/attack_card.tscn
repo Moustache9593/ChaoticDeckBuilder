@@ -6,12 +6,13 @@
 
 [node name="AttackCard" groups=["attack_card"] instance=ExtResource("1_ed7vv")]
 script = ExtResource("2_gxrif")
-damage = 35
+damage = 60
 speed = 800.0
-text = "Damage: 35
+text = "Damage: 60
 Speed: 800"
 texture = ExtResource("3_d1wf6")
 title = "Shoot"
+mana_cost = 4
 
 [node name="TitleRectangle" parent="MarginContainer/VSplitContainer" index="0"]
 text = "Shoot"
@@ -20,5 +21,8 @@ text = "Shoot"
 texture = ExtResource("3_d1wf6")
 
 [node name="TextRectangle" parent="MarginContainer/VSplitContainer" index="2"]
-text = "Damage: 35
+text = "Damage: 60
 Speed: 800"
+
+[node name="ManaCostText" parent="MarginContainer/VSplitContainer" index="3"]
+text = "Mana Cost: 4"

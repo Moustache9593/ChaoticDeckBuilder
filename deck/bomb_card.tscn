@@ -12,7 +12,6 @@ text = "Take damage: 20
 On Chuck: Take damage: 30"
 texture = ExtResource("3_3bog4")
 title = "Bomb"
-mana_cost = 2
 
 [node name="TitleRectangle" parent="MarginContainer/VSplitContainer" index="0"]
 text = "Bomb"
@@ -23,6 +22,3 @@ texture = ExtResource("3_3bog4")
 [node name="TextRectangle" parent="MarginContainer/VSplitContainer" index="2"]
 text = "Take damage: 20
 On Chuck: Take damage: 30"
-
-[node name="ManaCostText" parent="MarginContainer/VSplitContainer" index="3"]
-text = "Mana Cost: 2"

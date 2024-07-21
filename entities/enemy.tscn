@@ -16,8 +16,19 @@ radius = 34.0588
 script = ExtResource("1_edfrd")
 
 [node name="ActionTimer" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 12.0
 autostart = true
+
+[node name="ActionBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(200, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = -110.0
+offset_right = 100.0
+offset_bottom = -83.0
+grow_horizontal = 2
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, -75)

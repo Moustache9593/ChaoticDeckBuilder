@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dd554s177mkgw"]
+[gd_scene load_steps=8 format=3 uid="uid://dd554s177mkgw"]
 
 [ext_resource type="Script" path="res://deck/library.gd" id="1_swloc"]
 [ext_resource type="PackedScene" uid="uid://c40kraakerhsq" path="res://deck/attack_card.tscn" id="2_hcydh"]
 [ext_resource type="PackedScene" uid="uid://bsmcb4prd7np6" path="res://deck/shield_card.tscn" id="3_lf1wr"]
-[ext_resource type="PackedScene" uid="uid://chtp4ocxeslqt" path="res://deck/dash_card.tscn" id="5_8bf70"]
 [ext_resource type="PackedScene" uid="uid://b8muw21q46lch" path="res://deck/discard_both_card.tscn" id="6_nmh1g"]
 [ext_resource type="PackedScene" uid="uid://bxta61hqxxcu5" path="res://deck/discard_left_card.tscn" id="7_4byk3"]
 [ext_resource type="PackedScene" uid="uid://dc7qpvjhao3bt" path="res://deck/discard_right_card.tscn" id="7_8t1hs"]
@@ -19,15 +18,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_swloc")
 
-[node name="AttackCard" parent="." instance=ExtResource("2_hcydh")]
-layout_mode = 0
-
-[node name="AttackCard2" parent="." instance=ExtResource("2_hcydh")]
-layout_mode = 0
-
-[node name="AttackCard3" parent="." instance=ExtResource("2_hcydh")]
-layout_mode = 0
-
 [node name="AttackCard4" parent="." instance=ExtResource("2_hcydh")]
 layout_mode = 0
 
@@ -35,9 +25,6 @@ layout_mode = 0
 layout_mode = 0
 
 [node name="AttackCard11" parent="." instance=ExtResource("2_hcydh")]
-layout_mode = 0
-
-[node name="AttackCard12" parent="." instance=ExtResource("2_hcydh")]
 layout_mode = 0
 
 [node name="DiscardBothCard" parent="." instance=ExtResource("6_nmh1g")]
@@ -65,15 +52,6 @@ layout_mode = 0
 layout_mode = 0
 
 [node name="DiscardRightCard3" parent="." instance=ExtResource("7_8t1hs")]
-layout_mode = 0
-
-[node name="DashCard" parent="." instance=ExtResource("5_8bf70")]
-layout_mode = 0
-
-[node name="DashCard2" parent="." instance=ExtResource("5_8bf70")]
-layout_mode = 0
-
-[node name="DashCard3" parent="." instance=ExtResource("5_8bf70")]
 layout_mode = 0
 
 [node name="HealCard" parent="." instance=ExtResource("8_pkykj")]

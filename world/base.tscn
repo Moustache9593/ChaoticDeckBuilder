@@ -22,7 +22,7 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_p1pc0")]
 position = Vector2(52, 183)
-max_health = 75
+max_health = 70
 speed = 75.0
 dash_speed = 600.0
 

@@ -44,7 +44,7 @@ func ready():
 	choose_action()
 
 func physics_process(delta):
-	pass
+	$ActionBar.value = 100*($ActionTimer.wait_time - $ActionTimer.time_left)/$ActionTimer.wait_time
 
 
 func _on_projectile_timer_timeout():
