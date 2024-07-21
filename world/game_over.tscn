@@ -73,43 +73,36 @@ layout_mode = 2
 alignment = 1
 
 [node name="BombCard" parent="BoxContainer2/BoxContainer" instance=ExtResource("3_q671t")]
-modulate = Color(1, 1, 1, 1)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="BombCard2" parent="BoxContainer2/BoxContainer" instance=ExtResource("3_q671t")]
-modulate = Color(1, 1, 1, 1)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="BombCard3" parent="BoxContainer2/BoxContainer" instance=ExtResource("3_q671t")]
-modulate = Color(1, 1, 1, 1)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="BombCard4" parent="BoxContainer2/BoxContainer" instance=ExtResource("3_q671t")]
-modulate = Color(1, 1, 1, 1)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="BombCard5" parent="BoxContainer2/BoxContainer" instance=ExtResource("3_q671t")]
-modulate = Color(1, 1, 1, 1)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="BombCard6" parent="BoxContainer2/BoxContainer" instance=ExtResource("3_q671t")]
-modulate = Color(1, 1, 1, 1)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="BombCard7" parent="BoxContainer2/BoxContainer" instance=ExtResource("3_q671t")]
-modulate = Color(1, 1, 1, 1)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
