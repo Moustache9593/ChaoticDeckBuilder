@@ -6,7 +6,7 @@ extends "res://deck/card.gd"
 
 func ready():
 	text = "Use: Take damage: " + str(self_damage) + "\n"
-	text += "On Chuck: Take damage: " + str(chuck_damage)
+	text += "On Chuck: Take damage: " + str(chuck_damage) + "\n"
 	super()
 
 

@@ -8,7 +8,7 @@ var text = ""
 @export var title = "Card"
 var mouse_in_card = false
 
-var selected = false
+var selected = true
 
 func _ready():
 	ready()

@@ -1,0 +1,101 @@
+[gd_scene load_steps=9 format=3 uid="uid://dn33jiluke7w8"]
+
+[ext_resource type="Script" path="res://world/title.gd" id="1_dl3w1"]
+[ext_resource type="Texture2D" uid="uid://dwq3k6eljjfaa" path="res://assets/textures/background.png" id="1_m4im8"]
+[ext_resource type="PackedScene" uid="uid://b3k6lvvg2fcfk" path="res://deck/bomb_card.tscn" id="3_4ayey"]
+[ext_resource type="PackedScene" uid="uid://ifddmdld52rg" path="res://deck/exile_attack.tscn" id="3_hw5w7"]
+[ext_resource type="PackedScene" uid="uid://csk8xxks4edg7" path="res://deck/attack_discard_card.tscn" id="4_j21je"]
+[ext_resource type="PackedScene" uid="uid://cpkc2knabdl8o" path="res://deck/meat_shield_left.tscn" id="5_ygba6"]
+[ext_resource type="PackedScene" uid="uid://br54qtgihmk5x" path="res://deck/meat_shield_right.tscn" id="6_p4yj3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tvipv"]
+font_size = 40
+outline_size = 15
+outline_color = Color(0.631347, 0, 0.226722, 1)
+shadow_size = 15
+shadow_color = Color(0.854936, 0.000753535, 0.884092, 0.529412)
+
+[node name="Title" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dl3w1")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_m4im8")
+
+[node name="BoxContainer2" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical = true
+
+[node name="ColorRect" type="ColorRect" parent="BoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.211765, 0.258824, 1, 0.34902)
+
+[node name="BoxContainer" type="BoxContainer" parent="BoxContainer2/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical = true
+
+[node name="Label" type="Label" parent="BoxContainer2/ColorRect/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Dangerous Deck Game"
+label_settings = SubResource("LabelSettings_tvipv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="BoxContainer2/ColorRect/BoxContainer"]
+modulate = Color(0.615686, 0.301961, 1, 1)
+layout_mode = 2
+size_flags_vertical = 3
+text = "Click Here to start the game."
+flat = true
+
+[node name="BoxContainer" type="BoxContainer" parent="BoxContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="BombCard" parent="BoxContainer2/BoxContainer" instance=ExtResource("3_4ayey")]
+modulate = Color(1, 1, 1, 1)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="ExileAttack" parent="BoxContainer2/BoxContainer" instance=ExtResource("3_hw5w7")]
+modulate = Color(1, 1, 1, 1)
+layout_mode = 2
+
+[node name="AttackDiscardCard" parent="BoxContainer2/BoxContainer" instance=ExtResource("4_j21je")]
+modulate = Color(1, 1, 1, 1)
+layout_mode = 2
+
+[node name="MeatShieldLeft" parent="BoxContainer2/BoxContainer" instance=ExtResource("5_ygba6")]
+modulate = Color(1, 1, 1, 1)
+layout_mode = 2
+
+[node name="MeatShieldRight" parent="BoxContainer2/BoxContainer" instance=ExtResource("6_p4yj3")]
+modulate = Color(1, 1, 1, 1)
+layout_mode = 2
+
+[connection signal="pressed" from="BoxContainer2/ColorRect/BoxContainer/Button" to="." method="_on_button_pressed"]

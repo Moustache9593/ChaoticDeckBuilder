@@ -38,6 +38,7 @@ func _on_gui_card_used(card):
 					$Enemy.take_damage(card.damage)
 			"bomb":
 				player.take_damage(card.self_damage)
+				$BombSoundEffect.play()
 			_:
 				push_error("Invalid Card group: " + str(group) + "!")
 
@@ -61,6 +62,7 @@ func _on_gui_chucked_card(card):
 		match group:
 			"bomb":
 				player.take_damage(card.chuck_damage)
+				$BombSoundEffect.play()
 
 
 

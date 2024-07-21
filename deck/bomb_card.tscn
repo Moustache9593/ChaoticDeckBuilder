@@ -6,10 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://cftolduou1qa5" path="res://deck/discard_properties.tscn" id="4_c2fq4"]
 
 [node name="BombCard" groups=["bomb"] instance=ExtResource("1_ex3te")]
+modulate = Color(1, 1, 1, 1)
 script = ExtResource("2_p7mrp")
 self_damage = 55
 chuck_damage = 55
-explanation = "BOOM!!!"
+explanation = "BOOM!!!
+"
 texture = ExtResource("3_3bog4")
 mana_cost = 0
 title = "Bomb"
@@ -23,7 +25,7 @@ texture = ExtResource("3_3bog4")
 [node name="TextRectangle" parent="MarginContainer/VSplitContainer" index="2"]
 text = "Use: Take damage: 55
 On Chuck: Take damage: 55
-Does something
+BOOM!!!
 "
 
 [node name="ManaCostText" parent="MarginContainer/VSplitContainer" index="3"]

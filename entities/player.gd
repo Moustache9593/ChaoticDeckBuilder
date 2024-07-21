@@ -44,10 +44,10 @@ func get_move_dir():
 
 func die():
 	if not dead:
-		$DeathSoundEffect.detach()
+		#$DeathSoundEffect.detach()
 		queue_free()
 		dead = true
-		get_tree().reload_current_scene()
+		get_tree().change_scene_to_file("res://world/game_over.tscn")
 
 
 func _ready():

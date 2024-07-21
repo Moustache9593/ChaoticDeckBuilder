@@ -15,7 +15,11 @@ var current_action = "invalid"
 		$HealthBar.value = (health/max_health) * 100
 		$HealthBar/HealthText.text = str(health)
 		if health <= 0:
-			call_deferred("queue_free")
+			die()
+
+func die():
+	get_tree().change_scene_to_file("res://world/win_screen.tscn")
+	call_deferred("queue_free")
 
 func _ready():
 	ready()
