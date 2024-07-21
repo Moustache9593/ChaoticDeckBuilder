@@ -208,6 +208,8 @@ func try_unhold_card(is_right):
 		hand_holder.add_child(card)
 		if is_right:
 			hand_holder.move_child(card,get_last_index())
+		else:
+			hand_holder.move_child(card,get_first_index())
 		return true
 	else:
 		$ManaErrorSoundEffect.play()
@@ -229,16 +231,22 @@ func handle_card_selection():
 	if card_selected != -1:
 		select_card(card_selected)
 
-func handle_card_hold():
+func try_deduct_hold_mana():
+	if mana >= 1:
+		mana-=1
+		return true
+	else:
+		return false
 
+func handle_card_hold():
 	if get_hold_right_input():
-		if not right_card_is_held():
+		if not right_card_is_held() and try_deduct_hold_mana():
 			hold_card_right(get_currently_selected_card())
 		elif right_card_is_held():
 			if try_unhold_card(true):
 				use_card(get_last_index())
 	elif get_hold_left_input():
-		if not left_card_is_held():
+		if not left_card_is_held() and try_deduct_hold_mana():
 			hold_card_left(get_currently_selected_card())
 		elif left_card_is_held():
 			if try_unhold_card(false):
