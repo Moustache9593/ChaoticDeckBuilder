@@ -28,7 +28,7 @@ dash_speed = 600.0
 
 [node name="Enemy" parent="." instance=ExtResource("5_c8ymd")]
 position = Vector2(1285, 149)
-max_health = 250.0
+max_health = 1000.0
 
 [node name="ShootEffect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_iy2bt")

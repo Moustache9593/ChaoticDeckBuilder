@@ -6,6 +6,5 @@ extends "res://deck/card.gd"
 
 
 func ready():
-	text = "Damage: " + str(damage) + "\n"
 	super()
-
+	$MarginContainer/VSplitContainer/TextRectangle.text += "Damage: " + str(damage)

@@ -1,16 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3k6lvvg2fcfk"]
+[gd_scene load_steps=5 format=3 uid="uid://b3k6lvvg2fcfk"]
 
 [ext_resource type="PackedScene" uid="uid://pu82ny6qd2u" path="res://deck/card.tscn" id="1_ex3te"]
 [ext_resource type="Script" path="res://deck/bomb_card.gd" id="2_p7mrp"]
 [ext_resource type="Texture2D" uid="uid://bwmk8gfc2h588" path="res://assets/textures/bomb.png" id="3_3bog4"]
+[ext_resource type="PackedScene" uid="uid://cftolduou1qa5" path="res://deck/discard_properties.tscn" id="4_c2fq4"]
 
-[node name="BombCard" instance=ExtResource("1_ex3te")]
+[node name="BombCard" groups=["bomb"] instance=ExtResource("1_ex3te")]
 script = ExtResource("2_p7mrp")
-self_damage = 35
-chuck_damage = 45
-text = "Take damage: 35
-On Chuck: Take damage: 45"
+self_damage = 55
+chuck_damage = 55
+explanation = "BOOM!!!"
 texture = ExtResource("3_3bog4")
+mana_cost = 0
 title = "Bomb"
 
 [node name="TitleRectangle" parent="MarginContainer/VSplitContainer" index="0"]
@@ -20,5 +21,13 @@ text = "Bomb"
 texture = ExtResource("3_3bog4")
 
 [node name="TextRectangle" parent="MarginContainer/VSplitContainer" index="2"]
-text = "Take damage: 35
-On Chuck: Take damage: 45"
+text = "Use: Take damage: 55
+On Chuck: Take damage: 55
+Does something
+"
+
+[node name="ManaCostText" parent="MarginContainer/VSplitContainer" index="3"]
+text = "Mana Cost: 0"
+
+[node name="DiscardProperties" parent="." index="1" instance=ExtResource("4_c2fq4")]
+discard_directions = "right"

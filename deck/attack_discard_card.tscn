@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://csk8xxks4edg7"]
+
+[ext_resource type="PackedScene" uid="uid://pu82ny6qd2u" path="res://deck/card.tscn" id="1_ck07a"]
+[ext_resource type="Script" path="res://deck/attack_card.gd" id="2_oyipx"]
+[ext_resource type="Texture2D" uid="uid://b484jkcrxhj0" path="res://assets/textures/attack.png" id="3_1uani"]
+[ext_resource type="PackedScene" uid="uid://cftolduou1qa5" path="res://deck/discard_properties.tscn" id="4_raqv1"]
+
+[node name="AttackDiscardCard" groups=["attack_card"] instance=ExtResource("1_ck07a")]
+script = ExtResource("2_oyipx")
+damage = 60
+texture = ExtResource("3_1uani")
+mana_cost = 4
+title = "Shoot Discard"
+
+[node name="TitleRectangle" parent="MarginContainer/VSplitContainer" index="0"]
+text = "Shoot Discard"
+
+[node name="ImageRectangle" parent="MarginContainer/VSplitContainer" index="1"]
+texture = ExtResource("3_1uani")
+
+[node name="TextRectangle" parent="MarginContainer/VSplitContainer" index="2"]
+text = "Damage: 60
+
+Does something
+"
+
+[node name="ManaCostText" parent="MarginContainer/VSplitContainer" index="3"]
+text = "Mana Cost: 4"
+
+[node name="DiscardProperties" parent="." index="1" instance=ExtResource("4_raqv1")]
+discard_directions = "both"

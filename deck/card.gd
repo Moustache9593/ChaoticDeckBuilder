@@ -1,13 +1,14 @@
 @tool
 extends ColorRect
-@export_multiline var text = "Card Placeholder"
+var text = ""
+@export_multiline var explanation = "Card Placeholder"
 @export var texture = preload("res://assets/textures/placeholder_texture.png")
 @export var front_visible :bool = true
-@export var title = "Card"
 @export var mana_cost = 1
+@export var title = "Card"
 var mouse_in_card = false
 
-var selected = true
+var selected = false
 
 func _ready():
 	ready()
@@ -15,21 +16,23 @@ func _ready():
 
 func ready():
 	$MarginContainer/VSplitContainer/ImageRectangle.texture = texture
-	$MarginContainer/VSplitContainer/TextRectangle.text = text
 	$MarginContainer/CardBack.visible = not front_visible
-	$MarginContainer/VSplitContainer/TitleRectangle.text = title
+	update_text()
+
+
+
+func update_text():
+	$MarginContainer/VSplitContainer/TextRectangle.text = text + "\n" + explanation + "\n"
 	$MarginContainer/VSplitContainer/ManaCostText.text = "Mana Cost: " + str(mana_cost)
+	$MarginContainer/VSplitContainer/TitleRectangle.text = title
+
 
 func process(_delta):
-	$MarginContainer/VSplitContainer/ImageRectangle.texture = texture
-	$MarginContainer/VSplitContainer/TextRectangle.text = text
-	$MarginContainer/CardBack.visible = not front_visible
-	$MarginContainer/VSplitContainer/TitleRectangle.text = title
-	$MarginContainer/VSplitContainer/ManaCostText.text  = "Mana Cost: " + str(mana_cost)
-	if not selected:
-		modulate = Color.hex(0xa7aeff)
+	if selected:
+		modulate = Color(1,1,1,1)
 	else:
-		modulate = Color.WHITE
+		modulate = Color(.5,.5,.5,1)
+	pass
 
 
 

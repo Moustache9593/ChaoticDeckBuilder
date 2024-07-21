@@ -22,7 +22,7 @@ func _ready():
 func _physics_process(delta):
 	physics_process(delta)
 
-const damage = 30
+const damage = 35
 const projectile_speed = 900
 func shoot_projectile(group):
 	if player != null:
@@ -42,6 +42,9 @@ func get_player():
 func ready():
 	health = max_health
 	choose_action()
+	_on_status_timer_timeout()
+	_on_status_timer_timeout()
+
 
 func physics_process(delta):
 	$ActionBar.value = 100*($ActionTimer.wait_time - $ActionTimer.time_left)/$ActionTimer.wait_time
@@ -76,9 +79,13 @@ func choose_action():
 	if random_percent <= 50:
 		current_action = "attack"
 		$Marker2D/TextRectangle.text = "Attack for " + str(damage) + " damage."
+		$ActionTimer.set_wait_time(4.5)
+		$ActionTimer.start()
 	elif random_percent > 50:
 		current_action = "status"
 		$Marker2D/TextRectangle.text = "Inflicting status"
+		$ActionTimer.set_wait_time(9)
+		$ActionTimer.start()
 	
 
 
@@ -87,7 +94,6 @@ func _on_action_timer_timeout():
 		"attack":
 			shoot_projectile("enemy")
 		"status":
-			_on_status_timer_timeout()
 			_on_status_timer_timeout()
 		_:
 			push_error("Invalid enemy action!")
