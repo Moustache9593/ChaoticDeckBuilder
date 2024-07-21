@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cftolduou1qa5" path="res://deck/discard_properties.tscn" id="3_scr1h"]
 
 [node name="MeatShield" groups=["meat_shield"] instance=ExtResource("1_bjsje")]
+modulate = Color(1, 1, 1, 1)
 script = ExtResource("2_7yohn")
 shield = 15.0
 self_damage = 40.0
@@ -21,5 +22,8 @@ On Discard: Take 40 damage.
 
 
 "
+
+[node name="ManaCostText" parent="MarginContainer/VSplitContainer" index="3"]
+text = "Mana Cost: 3"
 
 [node name="DiscardProperties" parent="." index="1" instance=ExtResource("3_scr1h")]

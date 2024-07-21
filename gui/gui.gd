@@ -5,6 +5,9 @@ signal discarded_card
 signal give_me_mana
 signal chucked_card
 signal filled_hand
+
+@onready var deck = $VSplitContainer/HandRect/Deck
+
 func _ready():
 	set_deferred("size",get_window().size)
 	pass
@@ -41,7 +44,7 @@ func set_mana_text(value):
 
 func _on_hand_card_used(card):
 	emit_signal("card_used",card)
-	$VSplitContainer/HandRect/HBoxContainer/Deck.add_to_discard_pile(card)
+	deck.add_to_discard_pile(card)
 
 
 
@@ -60,7 +63,7 @@ func _on_player_shield_change(shield):
 
 func _on_hand_card_discarded(card):
 	emit_signal("discarded_card",card)
-	$VSplitContainer/HandRect/HBoxContainer/Deck.add_to_discard_pile(card)
+	deck.add_to_discard_pile(card)
 	
 
 
@@ -76,7 +79,7 @@ func _on_hand_mana_changed(mana):
 
 func _on_hand_chucked_card(card):
 	emit_signal("chucked_card",card)
-	$VSplitContainer/HandRect/HBoxContainer/Deck.add_to_discard_pile(card)
+	deck.add_to_discard_pile(card)
 
 
 func _on_hand_filled_hand():

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqy5lfh4g4n1k"]
+
+[ext_resource type="PackedScene" uid="uid://pu82ny6qd2u" path="res://deck/card.tscn" id="1_npukg"]
+[ext_resource type="Script" path="res://deck/meat_shield.gd" id="2_1ayxr"]
+[ext_resource type="Texture2D" uid="uid://dgp0bhef4fjx5" path="res://assets/textures/shield_both.png" id="3_xjc11"]
+[ext_resource type="PackedScene" uid="uid://cftolduou1qa5" path="res://deck/discard_properties.tscn" id="4_pxvdv"]
+
+[node name="MeatShieldBoth" groups=["meat_shield"] instance=ExtResource("1_npukg")]
+modulate = Color(1, 1, 1, 1)
+script = ExtResource("2_1ayxr")
+shield = 15.0
+self_damage = 40.0
+explanation = ""
+texture = ExtResource("3_xjc11")
+title = "Meat Shield Both"
+
+[node name="TitleRectangle" parent="MarginContainer/VSplitContainer" index="0"]
+text = "Meat Shield Both"
+
+[node name="ImageRectangle" parent="MarginContainer/VSplitContainer" index="1"]
+texture = ExtResource("3_xjc11")
+
+[node name="TextRectangle" parent="MarginContainer/VSplitContainer" index="2"]
+text = "Gain Shield: 15
+On Discard: Take 40 damage.
+
+
+"
+
+[node name="DiscardProperties" parent="." index="1" instance=ExtResource("4_pxvdv")]
+discard_directions = "both"

@@ -23,9 +23,11 @@ text = "Bomb"
 texture = ExtResource("3_3bog4")
 
 [node name="TextRectangle" parent="MarginContainer/VSplitContainer" index="2"]
-text = "Use: Take damage: 55
-On Chuck: Take damage: 55
+text = "Use: Take damage: 60
+On Chuck: Take damage: 60
+
 BOOM!!!
+
 "
 
 [node name="ManaCostText" parent="MarginContainer/VSplitContainer" index="3"]

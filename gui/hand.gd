@@ -41,6 +41,11 @@ func fill_hand():
 	emit_signal("filled_hand")
 
 func _ready():
+	for child in get_children():
+		if child.is_in_group("card"):
+			var card = child
+			remove_child(card)
+			hand_holder.add_child(card)
 	mana=max_mana
 	fill_hand()
 	select_card(card_currently_selected)
@@ -221,10 +226,17 @@ func try_deduct_hold_mana():
 
 
 
-func _physics_process(_delta):
-	if get_chuck_hand_input() and not chucking():
+func try_chuck_hand_timer():
+	if not chucking():
 		$ChuckTimer.start()
 		mana = max_mana
+		return true
+	else:
+		return false
+
+func _physics_process(_delta):
+	if get_chuck_hand_input():
+		try_chuck_hand_timer()
 	#handle_card_hold()
 	if not chucking():
 		handle_card_selection()

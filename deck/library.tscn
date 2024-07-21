@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dd554s177mkgw"]
+[gd_scene load_steps=7 format=3 uid="uid://dd554s177mkgw"]
 
 [ext_resource type="Script" path="res://deck/library.gd" id="1_swloc"]
 [ext_resource type="PackedScene" uid="uid://ifddmdld52rg" path="res://deck/exile_attack.tscn" id="4_0gkdw"]
 [ext_resource type="PackedScene" uid="uid://cpkc2knabdl8o" path="res://deck/meat_shield_left.tscn" id="4_46hf5"]
 [ext_resource type="PackedScene" uid="uid://csk8xxks4edg7" path="res://deck/attack_discard_card.tscn" id="4_jiaf2"]
 [ext_resource type="PackedScene" uid="uid://br54qtgihmk5x" path="res://deck/meat_shield_right.tscn" id="5_swwlt"]
+[ext_resource type="PackedScene" uid="uid://dqy5lfh4g4n1k" path="res://deck/meat_shield_both.tscn" id="6_kd876"]
 
 [node name="Library" type="Control"]
 visible = false
@@ -17,18 +18,17 @@ grow_vertical = 2
 script = ExtResource("1_swloc")
 
 [node name="ExileAttack" parent="." instance=ExtResource("4_0gkdw")]
-modulate = Color(1, 1, 1, 1)
-layout_mode = 0
-
-[node name="ExileAttack2" parent="." instance=ExtResource("4_0gkdw")]
-modulate = Color(1, 1, 1, 1)
-layout_mode = 0
-
-[node name="ExileAttack3" parent="." instance=ExtResource("4_0gkdw")]
-modulate = Color(1, 1, 1, 1)
 layout_mode = 0
 
 [node name="AttackDiscardCard" parent="." instance=ExtResource("4_jiaf2")]
+modulate = Color(1, 1, 1, 1)
+layout_mode = 0
+
+[node name="AttackDiscardCard2" parent="." instance=ExtResource("4_jiaf2")]
+modulate = Color(1, 1, 1, 1)
+layout_mode = 0
+
+[node name="AttackDiscardCard3" parent="." instance=ExtResource("4_jiaf2")]
 modulate = Color(1, 1, 1, 1)
 layout_mode = 0
 
@@ -36,11 +36,11 @@ layout_mode = 0
 modulate = Color(1, 1, 1, 1)
 layout_mode = 0
 
-[node name="MeatShieldLeft3" parent="." instance=ExtResource("4_46hf5")]
+[node name="MeatShieldLeft2" parent="." instance=ExtResource("4_46hf5")]
 modulate = Color(1, 1, 1, 1)
 layout_mode = 0
 
-[node name="MeatShieldLeft2" parent="." instance=ExtResource("4_46hf5")]
+[node name="MeatShieldLeft3" parent="." instance=ExtResource("4_46hf5")]
 modulate = Color(1, 1, 1, 1)
 layout_mode = 0
 
@@ -50,4 +50,11 @@ layout_mode = 0
 
 [node name="MeatShieldRight2" parent="." instance=ExtResource("5_swwlt")]
 modulate = Color(1, 1, 1, 1)
+layout_mode = 0
+
+[node name="MeatShieldRight3" parent="." instance=ExtResource("5_swwlt")]
+modulate = Color(1, 1, 1, 1)
+layout_mode = 0
+
+[node name="MeatShieldBoth" parent="." instance=ExtResource("6_kd876")]
 layout_mode = 0
