@@ -1,0 +1,110 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjv44khdoxlpy"]
+
+[ext_resource type="Script" path="res://world/game_over.gd" id="1_77fql"]
+[ext_resource type="Texture2D" uid="uid://dwq3k6eljjfaa" path="res://assets/textures/background.png" id="2_76soo"]
+[ext_resource type="PackedScene" uid="uid://b3k6lvvg2fcfk" path="res://deck/bomb_card.tscn" id="3_q671t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tvipv"]
+font_size = 40
+outline_size = 15
+outline_color = Color(0.631347, 0, 0.226722, 1)
+shadow_size = 15
+shadow_color = Color(0.854936, 0.000753535, 0.884092, 0.529412)
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_77fql")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_76soo")
+
+[node name="BoxContainer2" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical = true
+
+[node name="ColorRect" type="ColorRect" parent="BoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.211765, 0.258824, 1, 0.34902)
+
+[node name="BoxContainer" type="BoxContainer" parent="BoxContainer2/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical = true
+
+[node name="Label" type="Label" parent="BoxContainer2/ColorRect/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Game Over"
+label_settings = SubResource("LabelSettings_tvipv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="BoxContainer2/ColorRect/BoxContainer"]
+modulate = Color(0.615686, 0.301961, 1, 1)
+layout_mode = 2
+size_flags_vertical = 3
+text = "Click Here to restart the game"
+flat = true
+
+[node name="BoxContainer" type="BoxContainer" parent="BoxContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="BombCard" parent="BoxContainer2/BoxContainer" instance=ExtResource("3_q671t")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="BombCard2" parent="BoxContainer2/BoxContainer" instance=ExtResource("3_q671t")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="BombCard3" parent="BoxContainer2/BoxContainer" instance=ExtResource("3_q671t")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="BombCard4" parent="BoxContainer2/BoxContainer" instance=ExtResource("3_q671t")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="BombCard5" parent="BoxContainer2/BoxContainer" instance=ExtResource("3_q671t")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="BombCard6" parent="BoxContainer2/BoxContainer" instance=ExtResource("3_q671t")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="BombCard7" parent="BoxContainer2/BoxContainer" instance=ExtResource("3_q671t")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[connection signal="pressed" from="BoxContainer2/ColorRect/BoxContainer/Button" to="." method="_on_button_pressed"]

@@ -70,6 +70,11 @@ layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.247059, 0.223529, 1, 1)
 
+[node name="Deck" parent="VSplitContainer/HandRect" instance=ExtResource("3_ae7tt")]
+visible = false
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+
 [node name="HBoxContainer" type="HBoxContainer" parent="VSplitContainer/HandRect"]
 layout_mode = 1
 anchors_preset = 15
@@ -78,9 +83,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Deck" parent="VSplitContainer/HandRect/HBoxContainer" instance=ExtResource("3_ae7tt")]
-visible = false
+[node name="ChuckButton" type="Button" parent="VSplitContainer/HandRect/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+text = "Chuck and Refill Hand
+(Click here)
+(Press Space)"
+text_overrun_behavior = 3
 
 [node name="Hand" parent="VSplitContainer/HandRect/HBoxContainer" instance=ExtResource("2_6tk7o")]
 layout_mode = 2
@@ -91,9 +100,10 @@ modulate = Color(0.478431, 1, 1, 1)
 z_index = 1
 texture = ExtResource("4_6frls")
 
+[connection signal="pressed" from="VSplitContainer/HandRect/HBoxContainer/ChuckButton" to="VSplitContainer/HandRect/HBoxContainer/Hand" method="try_chuck_hand_timer"]
 [connection signal="card_discarded" from="VSplitContainer/HandRect/HBoxContainer/Hand" to="." method="_on_hand_card_discarded"]
 [connection signal="card_used" from="VSplitContainer/HandRect/HBoxContainer/Hand" to="." method="_on_hand_card_used"]
 [connection signal="chucked_card" from="VSplitContainer/HandRect/HBoxContainer/Hand" to="." method="_on_hand_chucked_card"]
 [connection signal="filled_hand" from="VSplitContainer/HandRect/HBoxContainer/Hand" to="." method="_on_hand_filled_hand"]
-[connection signal="get_card" from="VSplitContainer/HandRect/HBoxContainer/Hand" to="VSplitContainer/HandRect/HBoxContainer/Deck" method="give_card"]
+[connection signal="get_card" from="VSplitContainer/HandRect/HBoxContainer/Hand" to="VSplitContainer/HandRect/Deck" method="give_card"]
 [connection signal="mana_changed" from="VSplitContainer/HandRect/HBoxContainer/Hand" to="." method="_on_hand_mana_changed"]

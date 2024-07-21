@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://br54qtgihmk5x"]
+
+[ext_resource type="PackedScene" uid="uid://pu82ny6qd2u" path="res://deck/card.tscn" id="1_ggsky"]
+[ext_resource type="Script" path="res://deck/meat_shield.gd" id="2_igci5"]
+[ext_resource type="PackedScene" uid="uid://cftolduou1qa5" path="res://deck/discard_properties.tscn" id="3_i0480"]
+
+[node name="MeatShieldRight" groups=["meat_shield"] instance=ExtResource("1_ggsky")]
+script = ExtResource("2_igci5")
+shield = 15.0
+self_damage = 40.0
+explanation = ""
+mana_cost = 3
+title = "Meat Shield Right"
+
+[node name="TitleRectangle" parent="MarginContainer/VSplitContainer" index="0"]
+text = "Meat Shield Right"
+
+[node name="TextRectangle" parent="MarginContainer/VSplitContainer" index="2"]
+text = "Gain Shield: 15
+On Discard: Take 40 damage.
+
+
+"
+
+[node name="DiscardProperties" parent="." index="1" instance=ExtResource("3_i0480")]
+discard_directions = "right"

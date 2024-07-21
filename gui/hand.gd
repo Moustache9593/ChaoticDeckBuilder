@@ -14,7 +14,7 @@ var hand_size = 5
 @onready var card_hold_right = $HBoxContainer/CardHoldRight
 @onready var card_hold_left = $HBoxContainer/CardHoldLeft
 var mana_holder = self
-@export var max_mana = 5
+@export var max_mana = 15
 var mana = max_mana:
 	set(value):
 		mana = value
@@ -41,6 +41,11 @@ func fill_hand():
 	emit_signal("filled_hand")
 
 func _ready():
+	for child in get_children():
+		if child.is_in_group("card"):
+			var card = child
+			remove_child(card)
+			hand_holder.add_child(card)
 	mana=max_mana
 	fill_hand()
 	select_card(card_currently_selected)
@@ -58,17 +63,7 @@ func get_use_card_input():
 	else:
 		return false
 
-func get_hold_right_input():
-	if Input.is_action_just_pressed("hold_right"):
-		return true
-	else:
-		return false
 
-func get_hold_left_input():
-	if Input.is_action_just_pressed("hold_left"):
-		return true
-	else:
-		return false
 
 func get_left_card(card):
 	var card_index = card.get_index()
@@ -107,16 +102,28 @@ func use_card(card_index):
 	var card = []
 	if try_get_card(card_index,card) and card[0].mana_cost <= mana:
 		card = card[0]
-		if card.is_in_group("discard"):
+		if card.is_in_group("discard") or card.is_in_group("discard_properties"):
 			var left_card = get_left_card(card)
 			var right_card = get_right_card(card)
+			var discard_properties_holder = card
+			if card.is_in_group("discard_properties"):
+				discard_properties_holder = card.get_node("DiscardProperties")
 			# Discard card to left
-			if (card.discard_directions == "left" or\
-			 card.discard_directions == "both") and left_card!=null:
+			if (discard_properties_holder.discard_directions == "left" or\
+			 discard_properties_holder.discard_directions == "both") and left_card!=null:
+				print("Discard Left Card ??")
 				discard_card(left_card)
-			if (card.discard_directions == "right" or\
-			card.discard_directions == "both") and right_card != null:
+			if (discard_properties_holder.discard_directions == "right" or\
+			discard_properties_holder.discard_directions == "both") and right_card != null:
+				print("Discard Right Card ??")
 				discard_card(right_card)
+		if card.is_in_group("exile_attack"):
+			var left_card = get_left_card(card)
+			var right_card = get_right_card(card)
+			if left_card != null:
+				exile_card(left_card)
+			if right_card != null:
+				exile_card(right_card)
 		card_just_used = true
 		mana -= card.mana_cost
 		hand_holder.remove_child(card)
@@ -128,11 +135,16 @@ func use_card(card_index):
 	elif hand_holder.get_child_count() < card_index + 1:
 		push_warning("Tried to use card that isn't in hand.")
 
+func exile_card(card):
+	hand_holder.remove_child(card)
+
+
 func chuck_card(card):
 	hand_holder.remove_child(card)
 	emit_signal("chucked_card",card)
 
 func discard_card(card):
+	print("Discarded: " + str(card.title))
 	hand_holder.remove_child(card)
 	emit_signal("card_discarded",card)
 
@@ -143,31 +155,6 @@ func hold_card_right(card):
 func hold_card_left(card):
 	hand_holder.remove_child(card)
 	card_hold_left.add_child(card)
-
-func get_card_select_input():
-	var card1_select = Input.is_action_just_pressed("first_card")
-	var card2_select = Input.is_action_just_pressed("second_card")
-	var card3_select = Input.is_action_just_pressed("third_card")
-	var card4_select = Input.is_action_just_pressed("fourth_card")
-	var card5_select = Input.is_action_just_pressed("fifth_card")
-	var card_right_select = Input.is_action_just_pressed("card_right")
-	var card_left_select = Input.is_action_just_pressed("card_left")
-	if card1_select:
-		return 0
-	elif card2_select:
-		return 1
-	elif card3_select:
-		return 2
-	elif card4_select:
-		return 3
-	elif card5_select:
-		return 4
-	elif card_right_select:
-		return card_currently_selected + 1
-	elif card_left_select:
-		return card_currently_selected - 1
-	else:
-		return -1
 
 func select_card(card_selected):
 	unselect_cards()
@@ -223,14 +210,12 @@ func hand_full():
 
 
 func handle_card_selection():
-	var card_selected = get_card_select_input()
-	if card_currently_selected > hand_holder.get_child_count() - 1 and \
-	not hand_is_empty():
-		card_currently_selected = hand_holder.get_child_count() - 1
-	if card_just_used:
-		select_card(card_currently_selected)
-	if card_selected != -1:
-		select_card(card_selected)
+	unselect_cards()
+	for card in hand_holder.get_children():
+		if card.mouse_in_card:
+			select_card(card.get_index())
+			return
+
 
 func try_deduct_hold_mana():
 	if mana >= 1:
@@ -239,29 +224,42 @@ func try_deduct_hold_mana():
 	else:
 		return false
 
-func handle_card_hold():
-	if get_hold_right_input():
-		if not right_card_is_held() and try_deduct_hold_mana():
-			hold_card_right(get_currently_selected_card())
-		elif right_card_is_held():
-			if try_unhold_card(true):
-				use_card(get_last_index())
-	elif get_hold_left_input():
-		if not left_card_is_held() and try_deduct_hold_mana():
-			hold_card_left(get_currently_selected_card())
-		elif left_card_is_held():
-			if try_unhold_card(false):
-				use_card(get_first_index())
 
-func _physics_process(_delta):
-	if get_chuck_hand_input() and not chucking():
+
+func try_chuck_hand_timer():
+	if not chucking():
 		$ChuckTimer.start()
 		mana = max_mana
-	handle_card_hold()
+		return true
+	else:
+		return false
+
+func _physics_process(_delta):
+	if get_chuck_hand_input():
+		try_chuck_hand_timer()
+	#handle_card_hold()
 	if not chucking():
 		handle_card_selection()
 		if get_use_card_input():
-			use_card(card_currently_selected)
+			try_mouse_use_card()
+
+
+func try_mouse_use_card():
+	if Input.is_action_just_pressed("use_card"):
+		for card in hand_holder.get_children():
+			if card.mouse_in_card:
+				use_card(card.get_index())
+				return true
+		return false
+
+func try_mouse_hold_card():
+	if Input.is_action_just_pressed("click_hold_card") and not right_card_is_held():
+		for card in hand_holder.get_children():
+			if card.mouse_in_card:
+				hold_card_right(card)
+				return true
+		return false
+
 
 func get_last_card():
 	return hand_holder.get_child(hand_holder.get_child_count()-1)

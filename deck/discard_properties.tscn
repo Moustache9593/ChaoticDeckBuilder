@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cftolduou1qa5"]
+
+[ext_resource type="Script" path="res://deck/discard_properties.gd" id="1_mgdkp"]
+
+[node name="DiscardProperties" type="Node"]
+script = ExtResource("1_mgdkp")

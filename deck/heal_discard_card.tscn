@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd42bq6xps3na"]
+
+[ext_resource type="PackedScene" uid="uid://pu82ny6qd2u" path="res://deck/card.tscn" id="1_trchr"]
+[ext_resource type="PackedScene" uid="uid://cftolduou1qa5" path="res://deck/discard_properties.tscn" id="2_mdif6"]
+
+[node name="HealDiscardCard" groups=["Heal"] instance=ExtResource("1_trchr")]
+text = "Heal 10"
+title = "Heal Discard"
+
+[node name="TitleRectangle" parent="MarginContainer/VSplitContainer" index="0"]
+text = "Heal Discard"
+
+[node name="TextRectangle" parent="MarginContainer/VSplitContainer" index="2"]
+text = "Heal 10"
+
+[node name="DiscardProperties" parent="." index="1" instance=ExtResource("2_mdif6")]
+discard_directions = "right"

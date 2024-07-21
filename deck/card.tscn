@@ -5,10 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://f67j4ghdni4y" path="res://gui/image_rectangle.tscn" id="2_57wtd"]
 
 [node name="Card" type="ColorRect" groups=["card"]]
+modulate = Color(0.5, 0.5, 0.5, 1)
 custom_minimum_size = Vector2(192, 384)
 color = Color(0.490783, 0, 0.0868934, 1)
 script = ExtResource("1_sepc2")
-text = "Placeholderfff"
+explanation = "Does something"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -50,4 +51,10 @@ text = "Mana Cost: 1"
 [node name="CardBack" type="ColorRect" parent="MarginContainer"]
 visible = false
 layout_mode = 2
-color = Color(0.567188, 0.00212411, 0.796052, 1)
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(1, 1, 0.305882, 0)
+
+[connection signal="mouse_entered" from="MarginContainer/ColorRect" to="." method="_on_color_rect_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/ColorRect" to="." method="_on_color_rect_mouse_exited"]

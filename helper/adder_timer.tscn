@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://carsiup8pi4sj"]
+
+[ext_resource type="Script" path="res://helper/adder_timer.gd" id="1_h4ase"]
+
+[node name="AdderTimer" type="Timer"]
+wait_time = 2.0
+one_shot = true
+autostart = true
+script = ExtResource("1_h4ase")
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]

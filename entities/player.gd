@@ -44,10 +44,10 @@ func get_move_dir():
 
 func die():
 	if not dead:
-		$DeathSoundEffect.detach()
+		#$DeathSoundEffect.detach()
 		queue_free()
 		dead = true
-		get_tree().reload_current_scene()
+		get_tree().change_scene_to_file("res://world/game_over.tscn")
 
 
 func _ready():
@@ -84,15 +84,6 @@ func dash():
 	$DashSoundEffect.play()
 
 
-
-func _physics_process(_delta):
-	if not dashing():
-		get_input()
-		velocity = move_dir * speed
-	else:
-		velocity = move_dir * dash_speed
-	move_and_slide()
-	$Stick.rotation = vector_to_mouse.angle()
 
 
 func _on_hit_box_area_entered(area):

@@ -1,13 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dd554s177mkgw"]
+[gd_scene load_steps=7 format=3 uid="uid://dd554s177mkgw"]
 
 [ext_resource type="Script" path="res://deck/library.gd" id="1_swloc"]
-[ext_resource type="PackedScene" uid="uid://c40kraakerhsq" path="res://deck/attack_card.tscn" id="2_hcydh"]
-[ext_resource type="PackedScene" uid="uid://bsmcb4prd7np6" path="res://deck/shield_card.tscn" id="3_lf1wr"]
-[ext_resource type="PackedScene" uid="uid://chtp4ocxeslqt" path="res://deck/dash_card.tscn" id="5_8bf70"]
-[ext_resource type="PackedScene" uid="uid://b8muw21q46lch" path="res://deck/discard_both_card.tscn" id="6_nmh1g"]
-[ext_resource type="PackedScene" uid="uid://bxta61hqxxcu5" path="res://deck/discard_left_card.tscn" id="7_4byk3"]
-[ext_resource type="PackedScene" uid="uid://dc7qpvjhao3bt" path="res://deck/discard_right_card.tscn" id="7_8t1hs"]
-[ext_resource type="PackedScene" uid="uid://c3nw4xkhbkwj3" path="res://deck/heal_card.tscn" id="8_pkykj"]
+[ext_resource type="PackedScene" uid="uid://ifddmdld52rg" path="res://deck/exile_attack.tscn" id="4_0gkdw"]
+[ext_resource type="PackedScene" uid="uid://cpkc2knabdl8o" path="res://deck/meat_shield_left.tscn" id="4_46hf5"]
+[ext_resource type="PackedScene" uid="uid://csk8xxks4edg7" path="res://deck/attack_discard_card.tscn" id="4_jiaf2"]
+[ext_resource type="PackedScene" uid="uid://br54qtgihmk5x" path="res://deck/meat_shield_right.tscn" id="5_swwlt"]
+[ext_resource type="PackedScene" uid="uid://dqy5lfh4g4n1k" path="res://deck/meat_shield_both.tscn" id="6_kd876"]
 
 [node name="Library" type="Control"]
 visible = false
@@ -19,83 +17,44 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_swloc")
 
-[node name="AttackCard" parent="." instance=ExtResource("2_hcydh")]
+[node name="ExileAttack" parent="." instance=ExtResource("4_0gkdw")]
 layout_mode = 0
 
-[node name="AttackCard2" parent="." instance=ExtResource("2_hcydh")]
+[node name="AttackDiscardCard" parent="." instance=ExtResource("4_jiaf2")]
+modulate = Color(1, 1, 1, 1)
 layout_mode = 0
 
-[node name="AttackCard3" parent="." instance=ExtResource("2_hcydh")]
+[node name="AttackDiscardCard2" parent="." instance=ExtResource("4_jiaf2")]
+modulate = Color(1, 1, 1, 1)
 layout_mode = 0
 
-[node name="AttackCard4" parent="." instance=ExtResource("2_hcydh")]
+[node name="AttackDiscardCard3" parent="." instance=ExtResource("4_jiaf2")]
+modulate = Color(1, 1, 1, 1)
 layout_mode = 0
 
-[node name="AttackCard5" parent="." instance=ExtResource("2_hcydh")]
+[node name="MeatShieldLeft" parent="." instance=ExtResource("4_46hf5")]
+modulate = Color(1, 1, 1, 1)
 layout_mode = 0
 
-[node name="AttackCard11" parent="." instance=ExtResource("2_hcydh")]
+[node name="MeatShieldLeft2" parent="." instance=ExtResource("4_46hf5")]
+modulate = Color(1, 1, 1, 1)
 layout_mode = 0
 
-[node name="AttackCard12" parent="." instance=ExtResource("2_hcydh")]
+[node name="MeatShieldLeft3" parent="." instance=ExtResource("4_46hf5")]
+modulate = Color(1, 1, 1, 1)
 layout_mode = 0
 
-[node name="DiscardBothCard" parent="." instance=ExtResource("6_nmh1g")]
+[node name="MeatShieldRight" parent="." instance=ExtResource("5_swwlt")]
+modulate = Color(1, 1, 1, 1)
 layout_mode = 0
 
-[node name="DiscardBothCard2" parent="." instance=ExtResource("6_nmh1g")]
+[node name="MeatShieldRight2" parent="." instance=ExtResource("5_swwlt")]
+modulate = Color(1, 1, 1, 1)
 layout_mode = 0
 
-[node name="DiscardBothCard3" parent="." instance=ExtResource("6_nmh1g")]
+[node name="MeatShieldRight3" parent="." instance=ExtResource("5_swwlt")]
+modulate = Color(1, 1, 1, 1)
 layout_mode = 0
 
-[node name="DiscardLeftCard" parent="." instance=ExtResource("7_4byk3")]
-layout_mode = 0
-
-[node name="DiscardLeftCard2" parent="." instance=ExtResource("7_4byk3")]
-layout_mode = 0
-
-[node name="DiscardLeftCard3" parent="." instance=ExtResource("7_4byk3")]
-layout_mode = 0
-
-[node name="DiscardRightCard" parent="." instance=ExtResource("7_8t1hs")]
-layout_mode = 0
-
-[node name="DiscardRightCard2" parent="." instance=ExtResource("7_8t1hs")]
-layout_mode = 0
-
-[node name="DiscardRightCard3" parent="." instance=ExtResource("7_8t1hs")]
-layout_mode = 0
-
-[node name="DashCard" parent="." instance=ExtResource("5_8bf70")]
-layout_mode = 0
-
-[node name="DashCard2" parent="." instance=ExtResource("5_8bf70")]
-layout_mode = 0
-
-[node name="DashCard3" parent="." instance=ExtResource("5_8bf70")]
-layout_mode = 0
-
-[node name="HealCard" parent="." instance=ExtResource("8_pkykj")]
-layout_mode = 0
-
-[node name="ShieldCard" parent="." instance=ExtResource("3_lf1wr")]
-layout_mode = 0
-
-[node name="ShieldCard2" parent="." instance=ExtResource("3_lf1wr")]
-layout_mode = 0
-
-[node name="ShieldCard3" parent="." instance=ExtResource("3_lf1wr")]
-layout_mode = 0
-
-[node name="ShieldCard4" parent="." instance=ExtResource("3_lf1wr")]
-layout_mode = 0
-
-[node name="ShieldCard5" parent="." instance=ExtResource("3_lf1wr")]
-layout_mode = 0
-
-[node name="ShieldCard6" parent="." instance=ExtResource("3_lf1wr")]
-layout_mode = 0
-
-[node name="ShieldCard7" parent="." instance=ExtResource("3_lf1wr")]
+[node name="MeatShieldBoth" parent="." instance=ExtResource("6_kd876")]
 layout_mode = 0

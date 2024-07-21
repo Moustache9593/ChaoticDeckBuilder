@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://ifddmdld52rg"]
+
+[ext_resource type="PackedScene" uid="uid://pu82ny6qd2u" path="res://deck/card.tscn" id="1_pfe87"]
+[ext_resource type="Script" path="res://exile_attack.gd" id="2_178v6"]
+[ext_resource type="Texture2D" uid="uid://b484jkcrxhj0" path="res://assets/textures/attack.png" id="3_hjqtp"]
+
+[node name="ExileAttack" groups=["exile_attack"] instance=ExtResource("1_pfe87")]
+modulate = Color(1, 1, 1, 1)
+script = ExtResource("2_178v6")
+damage = 50
+explanation = "Remove left and right cards from deck."
+texture = ExtResource("3_hjqtp")
+mana_cost = 4
+title = "Exile Attack"
+
+[node name="TitleRectangle" parent="MarginContainer/VSplitContainer" index="0"]
+text = "Exile Attack"
+
+[node name="ImageRectangle" parent="MarginContainer/VSplitContainer" index="1"]
+texture = ExtResource("3_hjqtp")
+
+[node name="TextRectangle" parent="MarginContainer/VSplitContainer" index="2"]
+text = "
+Remove left and right cards from deck.
+Damage: 50"
+
+[node name="ManaCostText" parent="MarginContainer/VSplitContainer" index="3"]
+text = "Mana Cost: 4"

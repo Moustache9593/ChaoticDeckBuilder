@@ -1,5 +1,6 @@
 extends Node2D
 @export var projectile := preload("res://entities/projectile.tscn")
+@export var adder_timer_base := preload("res://helper/adder_timer.tscn")
 var player
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,18 +12,9 @@ func _process(_delta):
 	pass
 
 func shoot_projectile(group, card):
-	var projectile_child = projectile.instantiate()
-	var speed = 600
-	if "speed" in card:
-			speed = card.speed
-	projectile_child.damage = card.damage
-	projectile_child.position = player.position
-	var projectile_direction = get_mouse_vector() - player.position
-	projectile_child.velocity = Vector2.RIGHT.rotated(projectile_direction.angle()) * speed
-	add_child(projectile_child)
-	move_child(projectile_child, 0)
-	projectile_child.add_to_group(group)
-	$ShootEffect.play()
+	if $Enemy != null:
+		$Enemy.take_damage(card.damage)
+		$ShootEffect.play()
 
 
 func get_mouse_vector():
@@ -33,55 +25,49 @@ func get_mouse_vector():
 
 
 func _on_gui_card_used(card):
-	match card.title:
-		"Shoot":
-			if player != null:
-				shoot_projectile("player",card)
-		"Bomb":
-			if player != null:
+	for group in card.get_groups():
+		match group:
+			"meat_shield":
+				player.gain_shield(card.shield)
+				pass
+			"exile_attack":
+				if $Enemy != null:
+					$Enemy.take_damage(card.damage)
+			"attack_card":
+				if $Enemy != null:
+					$Enemy.take_damage(card.damage)
+			"bomb":
 				player.take_damage(card.self_damage)
-		"Shield":
-			if player != null:
-				player.gain_shield(card.shield)
-		"Dangerous Shield":
-			if player != null:
-				player.gain_shield(card.shield)
-		"Discard Left":
-			$DiscardEffect.play()
-		"Discard Right":
-			$DiscardEffect.play()
-		"Discard Both":
-			$DiscardEffect.play()
-		"Dash":
-			if player != null:
-				player.dash()
-		"Heal":
-			if player != null:
-				player.heal(15)
-		_:
-			push_error("Invalid Card Title!")
-	
+				$BombSoundEffect.play()
+			_:
+				push_error("Invalid Card group: " + str(group) + "!")
+
 
 
 
 
 func _on_gui_discarded_card(card):
-	if card.title == "Dangerous Shield":
-		if player != null:
-			player.take_damage(card.self_damage)
+	for group in card.get_groups():
+		match group:
+			"meat_shield":
+				if player != null:
+					player.take_damage(card.self_damage)
 
-	pass # Replace with function body.
+
 
 
 
 func _on_gui_chucked_card(card):
-	if card.title == "Bomb":
-		if player != null:
-			player.take_damage(card.chuck_damage)
-	pass # Replace with function body.
+	for group in card.get_groups():
+		match group:
+			"bomb":
+				player.take_damage(card.chuck_damage)
+				$BombSoundEffect.play()
 
 
-func _on_gui_filled_hand():
-	if player != null:
-		player.lose_all_shield()
+
+
+
+
+
 

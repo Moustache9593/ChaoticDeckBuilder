@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://8p28jp6qv3d1"]
+[gd_scene load_steps=9 format=3 uid="uid://8p28jp6qv3d1"]
 
 [ext_resource type="PackedScene" uid="uid://c55gh5wwb8v2y" path="res://gui/gui.tscn" id="1_8gte3"]
 [ext_resource type="Script" path="res://world/base.gd" id="1_t4q6w"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://l46f4w6syao8" path="res://entities/enemy.tscn" id="5_c8ymd"]
 [ext_resource type="AudioStream" uid="uid://dweo6ns6vdda2" path="res://assets/sounds/effects/laserShoot.wav" id="6_iy2bt"]
 [ext_resource type="AudioStream" uid="uid://c6evvk1ovl6ht" path="res://assets/sounds/effects/discard.wav" id="7_pfo8h"]
+[ext_resource type="AudioStream" uid="uid://d15sqsg247umb" path="res://assets/sounds/effects/bomb_explosion.wav" id="8_7em5l"]
 
 [node name="Base" type="Node2D"]
 script = ExtResource("1_t4q6w")
@@ -22,19 +23,22 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_p1pc0")]
 position = Vector2(52, 183)
-max_health = 75
+max_health = 70
 speed = 75.0
 dash_speed = 600.0
 
 [node name="Enemy" parent="." instance=ExtResource("5_c8ymd")]
 position = Vector2(1285, 149)
-max_health = 250.0
+max_health = 600.0
 
 [node name="ShootEffect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_iy2bt")
 
 [node name="DiscardEffect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_pfo8h")
+
+[node name="BombSoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_7em5l")
 
 [connection signal="card_used" from="GUI" to="." method="_on_gui_card_used"]
 [connection signal="chucked_card" from="GUI" to="." method="_on_gui_chucked_card"]

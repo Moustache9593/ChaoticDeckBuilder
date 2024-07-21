@@ -7,7 +7,3 @@ func ready():
 	text = "Gain shield: " + str(shield) + "\n"
 	super()
 
-
-func process(delta):
-	text = "Gain shield: " + str(shield) + "\n"
-	super(delta)
